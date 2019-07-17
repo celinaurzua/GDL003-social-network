@@ -11,9 +11,9 @@ body{
     height: 100%;
 }
 #logo {
+    width: 10%;
     display: inline;
-    margin-top: 5%;
-    
+    margin-top: 5%;   
 }
 #guanataco {
     font-family: 'Muli', sans-serif;
@@ -24,20 +24,19 @@ body{
     text-align: center;
     color: #FFD35B;
 }
-label{
-    color:  #C4C4C4;
-    font-family: 'Muli', sans-serif;
-    font-style: normal;
-}
-input{
-    display: inline;
-    border: 3px solid #C4C4C4;
-    width: 20%;
+#formLogin{
+    margin-top: 30px;
 }
 .textForm{
-    display: inline;
-    margin-top: 5%;
+    font-family: 'Muli', sans-serif;
+    font-weight: 400;
 }
+input[type=text] {
+    width: 40%;
+    padding: 12px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -50,6 +49,8 @@ input{
     margin: 50px 2px;
     cursor: pointer;
     pointer-events: ;
+    width: 30%;
   }
   
-  .button1 {width: 250px;}
+  .button1 {
+      }
