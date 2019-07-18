@@ -1,42 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
- 
+
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>Guanataco</title>
     <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="menu.css"/>
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700,700i,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body id="body">
+    
     <main>
-      <!-- MAIN HEADER -->
-      <div class="main-header">
-          <div class="row">
-            <div>
-              <img id="logo" src="imgs/map-marker-solid.svg">
+      <!-- INICIO -->
+      <div id="logIn" class="logIn">
+              <img id="logo" src="imgs/logoicono.png">
               <br>
               <br>
               <h1 id="guanataco">Guanataco</h1>
               <form id="formLogin">
                 <section>
-                  <p class="textForm" for="fname">First Name</p>
+                  <p class="textForm">Usuario</p>
                   <input type="text" id="fname" name="fname">
                 </section>
                 <section class="form">
-                  <p class="textForm" for="fname">First Name</p>
-                  <input type="text" id="fname" name="fname">
+                  <p class="textForm">Contraseña</p>
+                  <input type="password" id="fname" name="fname">
                 </section>
                 </form>
-                <button class="button button1">250px</button><br>
-            </div> <!-- END large-6 large-offset-6 columns -->
-          </div><!-- END ROW -->
-      </div><!-- END MAIN-HEADER -->
+                <button id="botonIngresar" class="button button1">INGRESAR</button>
+                <br>
+                <button class="button button1">REGISTRARSE POR FACEBOOK</button>
+                <p class="sinregistrotxt">Para ingresar sin registro</p>
+                <button class="buttonPink button1">VISITANTE</button>
+      </div>
 
 
+    <div id="muro">
+        <nav role="navigation">
+            <div id="menuToggle">
+              <input type="checkbox" />
+              <span></span>
+              <span></span>
+              <span></span>
+              <ul id="menu">
+                <a class="nombreUsuario"><li>Nombre de usuario</li></a>
+                <a><li>Editar perfil</li></a>
+                <a><li>Cerrar sesión</li></a>
+                <a><li>Contacto</li></a>
+              </ul>
+            </nav> 
+      
+        <div class="container">
+            <img id="fotoPerfil" src="imgs/img-perfil.png" alt="">
+            <p class="nombreUsuario">Nombre del usuario</p>
+              <p class="txtForm">Nombre del establecimiento</p>
+              <input type="text" id="fname">
+              <br>
+              <p class="txtForm">Ubicación</p>
+              <input type="text" id="lname">
+              <p class="txtForm">Comentario</p>
+              <textarea id="subject" style="height:100px"></textarea>
+              <select>
+                  <option>Público</option>
+                  <option>Privado</option>
+                </select>
+              <br>
+              <button class="button button1">PUBLICAR</button>
+          </div>
+    </div>
+
+<!--
+      <div class="containerPublicacion">
+        <p id="nombreComentario">Nombre del usuario</p>
+        <section class="comentario">
+          <p class="txtLugar"><span class="txtComentario">Nombre del establecimiento:</span> Tacos Pedro</p>
+          <p class="txtLugar"><span class="txtComentario">Ubicación:</span> Estadio Jalisco</p>
+          <p class="txtLugar"><span class="txtComentario">Comentario:</span></p>
+          Me gustaron mucho y las salsas también estaban ricas.
+        </section>
+      </div>
+      <div class="containerPublicacion">
+          <p id="nombreComentario">Nombre del usuario</p>
+          <section class="comentario">
+            <p class="txtLugar"><span class="txtComentario">Nombre del establecimiento:</span> Tacos Pedro</p>
+            <p class="txtLugar"><span class="txtComentario">Ubicación:</span> Estadio Jalisco</p>
+            <p class="txtLugar"><span class="txtComentario">Comentario:</span></p>
+            Me gustaron mucho y las salsas también estaban ricas.
+          </section>
+        </div>
+        <div class="containerPublicacion">
+            <p id="nombreComentario">Nombre del usuario</p>
+            <section class="comentario">
+              <p class="txtLugar"><span class="txtComentario">Nombre del establecimiento:</span> Tacos Pedro</p>
+              <p class="txtLugar"><span class="txtComentario">Ubicación:</span> Estadio Jalisco</p>
+              <p class="txtLugar"><span class="txtComentario">Comentario:</span></p>
+              Me gustaron mucho y las salsas también estaban ricas.
+            </section>
+          </div>
+          <div class="btn-group">
+              <button>Apple</button>
+              <button>Samsung</button>
+              <button>Sony</button>
+          </div> 
+    </div>    
+    -->
     </main>
-   
     <script src="data.js"></script>
     <script src="main.js"></script>
 
