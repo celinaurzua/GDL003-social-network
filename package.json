@@ -1,0 +1,25 @@
+{
+  "name": "GDL003-social-network",
+  "version": "1.0.0",
+  "description": "Instagram, Snapchat, Twitter, Facebook, Twitch, Linkedin, etc. Las redes\r sociales han invadido nuestras vidas. Las amamos y/u odiamos, y muchos no podemos vivir sin ellas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anndy9192/GDL003-social-network.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anndy9192/GDL003-social-network/issues"
+  },
+  "homepage": "https://github.com/anndy9192/GDL003-social-network#readme",
+  "dependencies": {
+    "http-server": "^0.11.1",
+    "serve": "^11.1.0"
+  }
+}
