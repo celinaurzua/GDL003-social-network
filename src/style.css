@@ -124,7 +124,7 @@ input[type=password] {
     font-size: 25px;
     color:#FFD35B;
 }
-#textoInicio{
+.textoInicio{
     font-family: 'Muli', sans-serif;
     font-weight: 400;
     font-size: 40px;
@@ -137,6 +137,14 @@ input[type=password] {
     font-size: 20px;
     text-align: center;
     margin: 0 0 60px 0;
+}
+#editarFoto{
+    font-family: 'Muli', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
 }
 .container {
     color: #503291;
