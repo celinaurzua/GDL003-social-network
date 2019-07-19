@@ -2,9 +2,9 @@
 <html lang="es">
 
   <head>
-    <title>Guanataco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+    <title>Guanataco</title>
     <link rel="stylesheet" href="extra-style.css"/>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="menu.css"/>
@@ -25,7 +25,7 @@
           <a><li>Español</li></a>
           <a><li>English</li></a>
         </ul>
-      </nav> 
+    </nav> 
   <body id="body">
     <main>
       <!-- INICIO -->
@@ -37,22 +37,22 @@
               <form id="formLogin">
                 <section>
                   <p class="textForm">Usuario</p>
-                  <input type="text" id="fname" name="fname">
+                  <input type="text" id="emailLogin" name="fname">
                 </section>
                 <section class="form">
                   <p class="textForm">Contraseña</p>
-                  <input type="password" id="fname" name="fname">
+                  <input type="password" id="passwordLogin" name="fname">
                 </section>
                 </form>
-                <button id="botonIngresar" class="button button1">INGRESAR</button>
+                <button id="botonIngresar" onclick="login()"  class="button button1">INGRESAR</button>
                 <br>
                 <p class="sinregistrotxt">Ingresa con facebook o gmail</p>
-                <button id="facebook"><i class="fa fa-facebook fa-fw"></i></button>
+                <button id="loginFacebook" onclick="loginFacebook()"><i class="fa fa-facebook fa-fw"></i></button>
                 <button id="google"><i class="fa fa-google"></i></button>
                 <br>
                 <p class="sinregistrotxt">o regístrate</p>
                 <button id="botonRegistrar" class="button button1">REGISTRARSE</button>
-              </div>      
+        </div>      
 
       <div id="registroCorreo">
                   <div class="row">
@@ -86,7 +86,7 @@
                     </section>
 
                        </form>
-                       <button class="button register">REGISTRAR</button>
+                       <button id="register" onclick="register()" class="button register">REGISTRAR</button>
         </div>
 
       <div id="muro">
@@ -111,9 +111,13 @@
           <p class="textoInicio">¡Explora nuevos lugares!</p> 
       </div>
     </main>
-    <script src="data.js"></script>
-    <script src="main.js"></script>
-
+        <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+        <!--<script src="https://www.gstatic.com/firebasejs/6.3.0/firebase.js"></script>-->
+        <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
+        <script src="firebase.js"></script>
+        <script src="data.js"></script>
+        <script src="main.js"></script>
   </body>
 </html>
 
