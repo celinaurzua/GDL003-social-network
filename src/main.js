@@ -6,7 +6,7 @@ logIn.style.display = "block";
 registro.style.display = "none"
 muro.style.display="none";
 menu.style.display="none"
-
+/*
 const mostrarMuro = () => {
   menu.style.display="block"
   muro.style.display = "block";
@@ -15,7 +15,7 @@ const mostrarMuro = () => {
 };
 
 document.getElementById("botonIngresar").addEventListener("click", mostrarMuro);
-
+*/
 const regresarLogin = () => {
   logIn.style.display = "block";
   menu.style.display="none"
@@ -33,3 +33,4 @@ const formularioRegistro = () => {
 };
 
 document.getElementById("botonRegistrar").addEventListener("click", formularioRegistro);
+
