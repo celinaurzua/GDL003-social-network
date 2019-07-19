@@ -2,20 +2,35 @@
 <html lang="es">
 
   <head>
+    <title>Guanataco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <title>Guanataco</title>
+    <link rel="stylesheet" href="extra-style.css"/>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="menu.css"/>
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700,700i,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
+  <nav id="navigation" role="navigation">
+      <div id="menuToggle">
+        <input type="checkbox" />
+        <a id="guanatacoNav">Guanataco</a>
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+          <a class="nombreUsuario"><li>Nombre de usuario</li></a>
+          <a><li>Editar perfil</li></a>
+          <a id="cerrarSesion"><li>Cerrar sesión</li></a>
+          <a><li>Español</li></a>
+          <a><li>English</li></a>
+        </ul>
+      </nav> 
   <body id="body">
-    
     <main>
       <!-- INICIO -->
       <div id="logIn" class="logIn">
-              <img id="logo" src="imgs/logoicono.png">
+              <img id="logo" src="imgs/tacologo.png">
               <br>
               <br>
               <h1 id="guanataco">Guanataco</h1>
@@ -31,27 +46,15 @@
                 </form>
                 <button id="botonIngresar" class="button button1">INGRESAR</button>
                 <br>
-                <button class="button button1">REGISTRARSE POR FACEBOOK</button>
-                <p class="sinregistrotxt">Para ingresar sin registro</p>
-                <button class="buttonPink button1">VISITANTE</button>
+                <p class="sinregistrotxt">Ingresa con facebook o gmail</p>
+                <button id="facebook"><i class="fa fa-facebook fa-fw"></i></button>
+                <button id="google"><i class="fa fa-google"></i></button>
+                <br>
+                <p class="sinregistrotxt">o regístrate</p>
+                <button id="botonRegistrar" class="button button1">REGISTRARSE</button>
       </div>
-
-
-    <div id="muro">
-        <nav role="navigation">
-            <div id="menuToggle">
-              <input type="checkbox" />
-              <span></span>
-              <span></span>
-              <span></span>
-              <ul id="menu">
-                <a class="nombreUsuario"><li>Nombre de usuario</li></a>
-                <a><li>Editar perfil</li></a>
-                <a><li>Cerrar sesión</li></a>
-                <a><li>Contacto</li></a>
-              </ul>
-            </nav> 
-      
+      <div id="muro">
+        <p id="textoInicio">¡Comienza a publicar tus recomendaciones!</p>
         <div class="container">
             <img id="fotoPerfil" src="imgs/img-perfil.png" alt="">
             <p class="nombreUsuario">Nombre del usuario</p>
@@ -69,7 +72,9 @@
               <br>
               <button class="button button1">PUBLICAR</button>
           </div>
-    </div>
+          <p id="textoInicio">¡Explora nuevos lugares!</p> 
+      </div>
+
 
 <!--
       <div class="containerPublicacion">
