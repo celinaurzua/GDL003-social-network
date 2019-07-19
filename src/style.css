@@ -65,6 +65,10 @@ input[type=password] {
     cursor: pointer;
     width: 25%;
   }
+  #botonIngresar{
+    margin-top: 40px;
+  }
+
   .sinregistrotxt{
       color: white;
       font-family: 'Muli', sans-serif;
@@ -90,9 +94,42 @@ input[type=password] {
     display: inline;
     border: none;
 }
+#facebook {
+    background-color: white ;
+    color: #3B5998;
+    text-decoration: none;
+    margin: 0 15px 0 0;
+    padding: 20px;
+    cursor: pointer;
+}
+#google {
+    background-color: white ;
+    color:#dd4b39;
+    text-decoration: none;
+    margin: 0 0 0 15px;
+    padding: 20px 25px;
+    cursor: pointer;
+}
 #fotoPerfil{
     width: 20%;
     margin: 10px 0 0px 0;
+}
+#botonRegistrar{
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+#textoAccion{
+    font-family: 'Muli', sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    color:#FFD35B;
+}
+#textoInicio{
+    font-family: 'Muli', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    margin: 50px 200px 50px 200px;
+    color:#FFD35B;
 }
 .nombreUsuario{
     font-family: 'Muli', sans-serif;
@@ -110,6 +147,7 @@ input[type=password] {
     padding: 20px;
     width: 50%;
     text-align: center;
+    margin: 0 0 0 23%;
 }
 select, textarea {
     font-family: 'Muli', sans-serif;
