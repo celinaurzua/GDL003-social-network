@@ -1,8 +1,8 @@
 
 
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-   Const loginFacebook() => {
+  
+  
         const loginFacebook = () => {
         let provider = new firebase.auth.FacebookAuthProvider();
             firebase.auth().signInWithPopup(provider).then((result) => {
@@ -15,7 +15,6 @@
                 let print = bienvenida + user.displayName
                 });
             }
-        }
 
     window.guanataco = {
         loginFacebook,
