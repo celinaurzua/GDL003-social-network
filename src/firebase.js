@@ -1,19 +1,8 @@
 
-  var firebaseConfig = {
-    apiKey: "AIzaSyBWL1vJ3QIbF56gfLHz8V8GQGUioGGK-Ek",
-    authDomain: "guanataco-3d987.firebaseapp.com",
-    databaseURL: "https://guanataco-3d987.firebaseio.com",
-    projectId: "guanataco-3d987",
-    storageBucket: "",
-    messagingSenderId: "79192495621",
-    appId: "1:79192495621:web:0a0e324ce9a1c11e"
-  };
+
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-
-  window = {
-      
-    FacebookLogin:() => {
+   Const loginFacebook() => {
         const loginFacebook = () => {
         let provider = new firebase.auth.FacebookAuthProvider();
             firebase.auth().signInWithPopup(provider).then((result) => {
@@ -25,13 +14,14 @@
                 let bienvenida = document.getElementById("textoInicio")
                 let print = bienvenida + user.displayName
                 });
-  }
-  return print;
-}
+            }
+        }
 
+    window.guanataco = {
+        loginFacebook,
+    };
 
  /*
-
 let firebaseConfig = {
     apiKey: "AIzaSyD1OWh4UsgmGc9lE1KbUaxkxdbhvz32xVw",
     authDomain: "guanataco-560b2.firebaseapp.com",
