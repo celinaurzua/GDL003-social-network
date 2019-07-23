@@ -1,3 +1,37 @@
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyBWL1vJ3QIbF56gfLHz8V8GQGUioGGK-Ek",
+    authDomain: "guanataco-3d987.firebaseapp.com",
+    databaseURL: "https://guanataco-3d987.firebaseio.com",
+    projectId: "guanataco-3d987",
+    storageBucket: "",
+    messagingSenderId: "79192495621",
+    appId: "1:79192495621:web:0a0e324ce9a1c11e"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  window = {
+      
+    FacebookLogin:() => {
+        const loginFacebook = () => {
+        let provider = new firebase.auth.FacebookAuthProvider();
+            firebase.auth().signInWithPopup(provider).then((result) => {
+                // This gives you a Facebook Access Token.
+                let token = result.credential.accessToken;
+                console.log("result", result)
+                // The signed-in user info.
+                let user = result.user;
+                let bienvenida = document.getElementById("textoInicio")
+                let print = bienvenida + user.displayName
+                });
+  }
+  return print;
+}
+
+
+ /*
+
 let firebaseConfig = {
     apiKey: "AIzaSyD1OWh4UsgmGc9lE1KbUaxkxdbhvz32xVw",
     authDomain: "guanataco-560b2.firebaseapp.com",
@@ -7,21 +41,24 @@ let firebaseConfig = {
     messagingSenderId: "615265430404",
     appId: "1:615265430404:web:1d2869d029617c56"
  };
- // Initialize Firebase
+
+
+Initialize Firebase
  firebase.initializeApp(firebaseConfig);
  const loginFacebook = () => {
     let provider = new firebase.auth.FacebookAuthProvider();
-    //provider.addScope('user_birthday');
+    provider.addScope('user_birthday');
     firebase.auth().signInWithPopup(provider).then((result) => {
-        // This gives you a Facebook Access Token.
+        This gives you a Facebook Access Token.
         let token = result.credential.accessToken;
         console.log("result", result)
-        // The signed-in user info.
+        The signed-in user info.
         let user = result.user;
-        console.log("Bienvenido " + user.displayName)
+        let print("Bienvenido " + user.displayName)
     });
+    user = document.getElementById("nombreBienvenida");
+        console.log
  }
-
 let login = (email, password) => {
    var email = document.getElementById("emailLogin").value;
    var password = document.getElementById("passwordLogin").value;
@@ -76,3 +113,4 @@ const register = () => {
     }).catch((error) => {
     });
  }
+*/
