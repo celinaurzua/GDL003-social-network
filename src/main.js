@@ -9,8 +9,8 @@ menu.style.display="none"
 
 
   const mostrarMuroFb = () => {
-  
-    let loginFB = window.loginFacebook;
+    let loginFB = window.guanataco.loginFacebook;
+    
     menu.style.display="block"
     muro.style.display = "block";
     logIn.style.display = "none";
