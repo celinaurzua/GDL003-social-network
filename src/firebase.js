@@ -36,7 +36,7 @@ const posts = () => {
     write("post",datos,"")
 }
 
-//Fun para escribir en la base de datoss
+//Fun para escribir en la base de datos
 const write = (collection, json, id) => {
 
     db.collection(collection).add(json)
@@ -62,8 +62,6 @@ let firebaseConfig = {
    messagingSenderId: "615265430404",
    appId: "1:615265430404:web:1d2869d029617c56"
 };
-
-
 Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const loginFacebook = () => {
