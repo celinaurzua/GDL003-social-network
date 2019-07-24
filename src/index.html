@@ -1,118 +1,151 @@
 <!DOCTYPE html>
 <html lang="es">
 
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <title>Guanataco</title>
-    <link rel="stylesheet" href="extra-style.css"/>
-    <link rel="stylesheet" href="style.css"/>
-    <link rel="stylesheet" href="menu.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700,700i,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <nav id="navigation" role="navigation">
-    <div id="menuToggle">
-      <input type="checkbox" />
-      <a id="guanatacoNav">Guanataco</a>
-      <span></span>
-      <span></span>
-      <span></span>
-      <ul id="menu">
-        <a class="nombreUsuario"><li>Nombre de usuario</li></a>
-        <a><li>Editar perfil</li></a>
-        <a id="cerrarSesion"><li>Cerrar sesión</li></a>
-        <a><li>Español</li></a>
-        <a><li>English</li></a>
-      </ul>
-    </div>  
-  </nav> 
-  <body id="body">
-    <main>
-      <!-- INICIO -->
-      <div id="logIn" class="logIn">
-        <img id="logo" src="imgs/tacologo.png">
-        <br>
-        <br>
-        <h1 id="guanataco">Guanataco</h1>
-        <form id="formLogin">
-          <section>
-            <p class="textForm">Usuario</p>
-            <input type="text" id="emailLogin" name="fname">
-          </section>
-          <section class="form">
-            <p class="textForm">Contraseña</p>
-            <input type="password" id="passwordLogin" name="fname">
-          </section>
-        </form>
-        <button id="botonIngresar" onclick="login()"  class="button button1">INGRESAR</button>
-        <br>
-        <p class="sinregistrotxt">Ingresa con facebook o gmail</p>
-        <button id="loginFacebook" onclick="loginFacebook()"><i class="fa fa-facebook fa-fw"></i></button>
-        <button id="google"><i class="fa fa-google"></i></button>
-        <br>
-        <p class="sinregistrotxt">o regístrate</p>
-        <button id="botonRegistrar" class="button button1">REGISTRARSE</button>
-      </div>      
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Guanataco</title>
+  <link rel="stylesheet" href="extra-style.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="menu.css" />
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700,700i,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<nav id="navigation" role="navigation">
+  <div id="menuToggle">
+    <input type="checkbox" />
+    <a id="guanatacoNav">Guanataco</a>
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul id="menu">
+      <a class="nombreUsuario">
+        <li>Nombre de usuario</li>
+      </a>
+      <a>
+        <li>Editar perfil</li>
+      </a>
+      <a id="cerrarSesion">
+        <li>Cerrar sesión</li>
+      </a>
+      <a>
+        <li>Español</li>
+      </a>
+      <a>
+        <li>English</li>
+      </a>
+    </ul>
+  </div>
+</nav>
 
-      <div id="registroCorreo">
-        <div class="row">
-          </div>
-            <img id="login" src="imgs/img-perfil.png">
-            <br>
-            <a id="editarFoto">Editar foto</a>
-                  
-            <h1 class="textoInicio" id="registrate">Regístrate</h1>
-            <form>
-              <section class="form">
-                <br>
-                <br>
-                <label class="textForm">Nombre completo</label>
-                <br>
-                <br>
-                <input type="text" id="fnombre" name="fnombre">
-              </section>
-              <br>
-              <section class="form">
-                <label class="textForm">Correo</label>
-                <br>
-                <input type="text" id="fcorreo" name="fnombre">
-              </section>
-                <br>
-                <section class="form">
-                <label class="textForm">Contraseña</label>
-                <br>
-                <br>
-                <input type="text" id="fcorreo" name="fnombre">
-              </section>
-          </form>
-          <button id="register" onclick="register()" class="button register">REGISTRAR</button>
-        </div>
+<body id="body">
+  <main>
+    <!-- INICIO -->
+    <div id="logIn" class="logIn">
+      <img id="logo" src="imgs/tacologo.png">
+      <br>
+      <br>
+      <h1 id="guanataco">Guanataco</h1>
+      <form id="formLogin">
+        <section>
+          <p class="textForm">Usuario</p>
+          <input type="text" id="emailLogin" name="fname">
+        </section>
+        <section class="form">
+          <p class="textForm">Contraseña</p>
+          <input type="password" id="passwordLogin" name="fname">
+        </section>
+      </form>
+      <button id="botonIngresar" onclick="login()" class="button button1">INGRESAR</button>
+      <br>
+      <p class="sinregistrotxt">Ingresa con facebook o gmail</p>
+      <button id="loginFacebook" onclick="loginFacebook()"><i class="fa fa-facebook fa-fw"></i></button>
+      <button id="google"><i class="fa fa-google"></i></button>
+      <br>
+      <p class="sinregistrotxt">o regístrate</p>
+      <button id="botonRegistrar" class="button button1">REGISTRARSE</button>
+    </div>
 
-        <div id="muro">
-          <p id="textoInicio" class="textoInicio">¡Comienza a publicar tus recomendaciones <span id="nombreBienvenida">  </span>!</p>
-          <div class="container">
-            <img id="fotoPerfil" src="imgs/img-perfil.png" alt="">
-            <p class="nombreUsuario">Nombre del usuario</p>
-            <p class="txtForm">Nombre del establecimiento</p>
-            <input type="text" id="fname">
-            <br>
-            <p class="txtForm">Ubicación</p>
-            <input type="text" id="lname">
-            <p class="txtForm">Comentario</p>
-            <textarea id="subject" style="height:100px"></textarea>
-            <select>
-              <option>Público</option>
-              <option>Privado</option>
-            </select>
-            <br>
-            <button class="button button1">PUBLICAR</button>
-          </div>
-          <p class="textoInicio">¡Explora nuevos lugares!</p> 
-        </div>
+    <div id="registroCorreo">
+      <div class="row">
+      </div>
+      <img id="login" src="imgs/img-perfil.png">
+      <br>
+      <a id="editarFoto">Editar foto</a>
+
+      <h1 class="textoInicio" id="registrate">Regístrate</h1>
+      <form>
+        <section class="form">
+          <br>
+          <br>
+          <label class="textForm">Nombre completo</label>
+          <br>
+          <br>
+          <input type="text" id="fnombre" name="fnombre">
+        </section>
+        <br>
+        <section class="form">
+          <label class="textForm">Correo</label>
+          <br>
+          <input type="text" id="fcorreo" name="fnombre">
+        </section>
+        <br>
+        <section class="form">
+          <label class="textForm">Contraseña</label>
+          <br>
+          <br>
+          <input type="text" id="fcorreo" name="fnombre">
+        </section>
+      </form>
+      <button id="register" onclick="register()" class="button register">REGISTRAR</button>
+    </div>
+
+    <div id="muro">
+      <p id="textoInicio" class="textoInicio">¡Comienza a publicar tus recomendaciones <span id="nombreBienvenida">
+        </span>!</p>
+      <div class="container">
+        <img id="fotoPerfil" src="imgs/img-perfil.png" alt="">
+        <p class="nombreUsuario">Nombre del usuario</p>
+        <p class="txtForm" id="df">Nombre del establecimiento</p>
+        <input type="text" id="fname">
+        <br>
+        <p class="txtForm">Ubicación</p>
+        <input type="text" id="lname">
+        <p class="txtForm">Comentario</p>
+        <textarea id="subject" style="height:100px"></textarea>
+        <select>
+          <option>Público</option>
+          <option>Privado</option>
+        </select>
+        <br>
+        <button class="button button1" id="publicar">PUBLICAR</button>
+      </div>
+      <p class="textoInicio">¡Explora nuevos lugares!</p>
+    </div>
+    <div id="google_translate_element"></div>
+    <a>
+      <li>
         <div id="google_translate_element"></div>
-        <a><li>  <div id="google_translate_element"></div></li></a>
-    </main>
+      </li>
+    </a>
+  </main>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+  <script src="firebaseConfig.js"></script>
+
+  <script type="text/javascript"
+    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="firebase.js"></script>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
 
     <script type="text/javascript">
       function googleTranslateElementInit() {
@@ -120,7 +153,7 @@
       }
       </script>
        
-        <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
         <script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script> 
         <script src="firebaseConfig.js"></script>
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
