@@ -11,12 +11,27 @@ const loginFacebook = () => {
         let bienvenida = document.getElementById("nombreBienvenida")
         bienvenida.innerHTML(user.displayName)
 
-
         let datos = {
             nombre: user.displayName,
             edad: 13,
             domicilio: "calle"
         }
+
+  // Initialize Firebase
+  
+  
+        const loginFacebook = () => {
+        let provider = new firebase.auth.FacebookAuthProvider();
+            firebase.auth().signInWithPopup(provider).then((result) => {
+                // This gives you a Facebook Access Token.
+                let token = result.credential.accessToken;
+                console.log("result", result)
+                // The signed-in user info.
+                let user = result.user;
+                let bienvenida = document.getElementById("textoInicio")
+                let print = bienvenida + user.displayName
+                });
+            }
 
         write("users",datos)
     });
