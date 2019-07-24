@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/PaulinaMontoya/GDL003-social-network/issues"
   },
-  "homepage": "https://github.com/PaulinaMontoya/GDL003-social-network#readme"
+  "homepage": "https://github.com/PaulinaMontoya/GDL003-social-network#readme",
+  "dependencies": {
+    "firebase": "^5.11.0"
+  }
 }

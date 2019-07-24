@@ -9,7 +9,7 @@ menu.style.display="none"
 
 
   const mostrarMuroFb = () => {
-    let loginFB = window.guanataco.loginFacebook;
+     let loginFB = loginFacebook();
     
     menu.style.display="block"
     muro.style.display = "block";
@@ -17,6 +17,7 @@ menu.style.display="none"
     registro.style.display = "none"
   }
   document.getElementById("loginFacebook").addEventListener("click", mostrarMuroFb);
+  document.getElementById("publicar").addEventListener("click", posts);
 
 
 /*
