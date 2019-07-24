@@ -11,13 +11,11 @@ const loginFacebook = () => {
         let bienvenida = document.getElementById("nombreBienvenida")
         bienvenida.innerHTML(user.displayName)
 
-
         let datos = {
             nombre: user.displayName,
             edad: 13,
             domicilio: "calle"
         }
-
         write("users",datos)
     });
 }
