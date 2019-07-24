@@ -16,23 +16,6 @@ const loginFacebook = () => {
             edad: 13,
             domicilio: "calle"
         }
-
-  // Initialize Firebase
-  
-  
-        const loginFacebook = () => {
-        let provider = new firebase.auth.FacebookAuthProvider();
-            firebase.auth().signInWithPopup(provider).then((result) => {
-                // This gives you a Facebook Access Token.
-                let token = result.credential.accessToken;
-                console.log("result", result)
-                // The signed-in user info.
-                let user = result.user;
-                let bienvenida = document.getElementById("textoInicio")
-                let print = bienvenida + user.displayName
-                });
-            }
-
         write("users",datos)
     });
 }
@@ -79,8 +62,6 @@ let firebaseConfig = {
    messagingSenderId: "615265430404",
    appId: "1:615265430404:web:1d2869d029617c56"
 };
-
-
 Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const loginFacebook = () => {
