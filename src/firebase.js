@@ -36,7 +36,7 @@ const posts = () => {
     write("post",datos,"")
 }
 
-//Fun para escribir en la base de datos
+//Fun para escribir en la base de datoss
 const write = (collection, json, id) => {
 
     db.collection(collection).add(json)

@@ -11,13 +11,18 @@ menu.style.display="none"
   const mostrarMuroFb = () => {
      let loginFB = loginFacebook();
     
+  document.getElementById("loginFacebook").addEventListener("click", () => {
+    let loginFB = window.guanataco.loginFacebook;
     menu.style.display="block"
     muro.style.display = "block";
     logIn.style.display = "none";
     registro.style.display = "none"
+
   }
   document.getElementById("loginFacebook").addEventListener("click", mostrarMuroFb);
   document.getElementById("publicar").addEventListener("click", posts);
+  
+  });
 
 
 /*
