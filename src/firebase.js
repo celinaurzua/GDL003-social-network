@@ -10,6 +10,7 @@ const loginFacebook = () => {
         let user = result.user;
         console.log(result.user);
         console.log(user.displayName)
+        console.log(user.email)
         let bienvenida = document.getElementById("nombreBienvenida")
         bienvenida.innerHTML=user.displayName
         document.getElementById("fotoPerfil").innerHTML = `<img src="${user.photoURL}">`
