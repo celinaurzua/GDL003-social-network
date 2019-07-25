@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <title>Guanataco</title>
-  <link rel="stylesheet" href="extra-style.css" />
+  <link rel="stylesheet" href="card-style.css" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="menu.css" />
   <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700,700i,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/f4b836b075.js"></script>
 </head>
 <nav id="navigation" role="navigation">
   <div id="menuToggle">
@@ -32,8 +33,10 @@
         <li>Español</li>
       </a>
       <a>
-        <li>English</li>
-      </a>
+          <li>
+            <div id="google_translate_element"></div>
+          </li>
+        </a>
     </ul>
   </div>
 </nav>
@@ -71,7 +74,7 @@
       </div>
       <img id="login">
       <br>
-    
+
 
       <h1 class="textoInicio" id="registrate">Regístrate</h1>
       <form>
@@ -103,33 +106,61 @@
     <div id="muro">
       <p id="textoInicio" class="textoInicio">¡Comienza a publicar tus recomendaciones!</p>
       <div class="container">
-        <div >
+        <div>
           <div id="fotoPerfil">
-        <img  src="" alt=""></div>
-        <span id= "nombreBienvenida" class="nombreUsuario"></span>
-        <p class="txtForm" id="df">Nombre del establecimiento</p>
-        <input type="text" id="fname">
-        <br>
-        <p class="txtForm">Ubicación</p>
-        <input type="text" id="lname">
-        <p class="txtForm">Comentario</p>
-        <textarea id="subject" style="height:100px"></textarea>
-        <select>
-          <option>Público</option>
-          <option>Privado</option>
-        </select>
-        <br>
-        <button class="button button1" id="publicar">PUBLICAR</button>
+            <img src="" alt=""></div>
+          <span id="nombreBienvenida" class="nombreUsuario"></span>
+          <p class="txtForm" id="df">Nombre del establecimiento</p>
+          <input type="text" id="fname">
+          <br>
+          <p class="txtForm">Ubicación</p>
+          <input type="text" id="lname">
+          <p class="txtForm">Comentario</p>
+          <textarea id="subject" style="height:100px"></textarea>
+          <select>
+            <option>Público</option>
+            <option>Privado</option>
+          </select>
+          <br>
+          <button class="button button1" id="publicar">PUBLICAR</button>
+        </div>
+
       </div>
-      
-    </div>
-    <p class="textoInicio">¡Explora nuevos lugares!</p>
-    <div id="google_translate_element"></div>
-    <a>
-      <li>
-        <div id="google_translate_element"></div>
-      </li>
-    </a>
+      <p class="textoInicio">¡Explora nuevos lugares!</p>
+
+
+      <section>
+        <div class="cardPost">
+          <div class="card">
+            <div class="card-toolbar">
+                <div id="fotoPost">
+                    <img src="" alt=""></div>
+            </div>
+            <div class="card-body">
+              <div id="nombrePost" class="nombreUsuario" ><h3 ></h3></div>
+              <br>
+              <div id="coments">
+                Photographer
+                PhotographerPhotographerPhotographerPhotographerPhotographerPhotographerPhotographerPhotograPhotographerPhotographerpherPhotographerPhotographerPhotographerPhotographerPhotographerPhotographerPhotographer
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="buttonIcon">
+                <i class="far fa-smile"></i>
+                <p class="icon">Bueno</p>
+              </div>
+              <div class="buttonIcon">
+                <i class="far fa-meh"></i>
+                <p class="icon">Regular</p>
+              </div>
+              <div class="buttonIcon">
+                <i class="far fa-frown"></i>
+                <p class="icon">Malo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
   </main>
 
   <script type="text/javascript">

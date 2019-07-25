@@ -13,6 +13,10 @@ const loginFacebook = () => {
         let bienvenida = document.getElementById("nombreBienvenida")
         bienvenida.innerHTML=user.displayName
         document.getElementById("fotoPerfil").innerHTML = `<img src="${user.photoURL}">`
+        let nombrePost = document.getElementById("nombrePost")
+        nombrePost.innerHTML=user.displayName
+        document.getElementById("fotoPost").innerHTML = `<img src="${user.photoURL}">`
+
         
 
             let datos = {
