@@ -115,7 +115,11 @@ input[type=password] {
     margin: 0 auto;
     text-align: center;
 }
-
+#fotoPost{
+    
+    margin: 0 auto;
+    text-align: center;
+}
 img{
     border-radius: 50%;
     border: 2px solid #FFD35B;
