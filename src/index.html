@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <title>Guanataco</title>
-  <link rel="stylesheet" href="extra-style.css" />
+  <link rel="stylesheet" href="card-styles.css" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="menu.css" />
   <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700,700i,900&display=swap" rel="stylesheet">
@@ -32,7 +32,7 @@
         <li>Español</li>
       </a>
       <a>
-        <li>English</li>
+        <li>  <div id="google_translate_element"></div></li>
       </a>
     </ul>
   </div>
@@ -121,27 +121,19 @@
         <br>
         <button class="button button1" id="publicar">PUBLICAR</button>
       </div>
-      
-    </div>
-    <p class="textoInicio">¡Explora nuevos lugares!</p>
-    <div id="google_translate_element"></div>
-    <a>
-      <li>
-        <div id="google_translate_element"></div>
-      </li>
-    </a>
   </main>
 
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-    }
+  }
+  
+    
   </script>
   <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
   <script src="firebaseConfig.js"></script>
-
   <script type="text/javascript"
     src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script src="firebase.js"></script>
