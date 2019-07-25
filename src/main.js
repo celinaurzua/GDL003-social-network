@@ -18,6 +18,7 @@ menu.style.display="none"
   }
   document.getElementById("loginFacebook").addEventListener("click", mostrarMuroFb);
   document.getElementById("publicar").addEventListener("click", posts);
+  
 
 
 /*

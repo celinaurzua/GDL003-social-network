@@ -8,18 +8,20 @@ const loginFacebook = () => {
         console.log("result", result)
         // The signed-in user info.
         let user = result.user;
+        console.log(result.user);
         let bienvenida = document.getElementById("nombreBienvenida")
-        bienvenida.innerHTML(user.displayName)
+        bienvenida.innerHTML=user.displayName
+        
 
-        let datos = {
-            nombre: user.displayName,
-            edad: 13,
-            domicilio: "calle"
-        }
-        write("users",datos)
+            let datos = {
+                nombre: user.displayName,
+                imagen: user.photoURL,
+                email: user.email
+            };
+            console.log(datos)
+            write("users", datos, "")
     });
 }
-
 
 const posts = () => {
     let establecimiento = document.getElementById("fname").value;
@@ -32,20 +34,20 @@ const posts = () => {
         comentario: comentario,
         likes: 0
     }
-    
-    write("post",datos,"")
+
+    write("post", datos, "")
 }
 
 //Fun para escribir en la base de datos
 const write = (collection, json, id) => {
 
     db.collection(collection).add(json)
-    .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function(error) {
-        console.error("Error adding document: ", error);
-    });
+        .then(function (docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function (error) {
+            console.error("Error adding document: ", error);
+        });
 }
 
 window.guanataco = {
@@ -53,31 +55,7 @@ window.guanataco = {
 };
 
 /*
-let firebaseConfig = {
-   apiKey: "AIzaSyD1OWh4UsgmGc9lE1KbUaxkxdbhvz32xVw",
-   authDomain: "guanataco-560b2.firebaseapp.com",
-   databaseURL: "https://guanataco-560b2.firebaseio.com",
-   projectId: "guanataco-560b2",
-   storageBucket: "",
-   messagingSenderId: "615265430404",
-   appId: "1:615265430404:web:1d2869d029617c56"
-};
-Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const loginFacebook = () => {
-   let provider = new firebase.auth.FacebookAuthProvider();
-   provider.addScope('user_birthday');
-   firebase.auth().signInWithPopup(provider).then((result) => {
-       This gives you a Facebook Access Token.
-       let token = result.credential.accessToken;
-       console.log("result", result)
-       The signed-in user info.
-       let user = result.user;
-       let print("Bienvenido " + user.displayName)
-   });
-   user = document.getElementById("nombreBienvenida");
-       console.log
-}
+
 let login = (email, password) => {
   var email = document.getElementById("emailLogin").value;
   var password = document.getElementById("passwordLogin").value;
