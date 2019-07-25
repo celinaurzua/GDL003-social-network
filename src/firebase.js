@@ -9,9 +9,11 @@ const loginFacebook = () => {
         //The signed-in user info.
         let user = result.user;
         console.log(result.user);
+        console.log(user.displayName)
         let bienvenida = document.getElementById("nombreBienvenida")
 
         bienvenida.innerHTML=user.displayName
+        document.getElementById("fotoPerfil").innerHTML = `<img src="${user.photoURL}">`
         
 
             let datos = {
@@ -76,6 +78,7 @@ let login = (email, password) => {
           }
       });
 }
+*/
 const register = () => {
    var name = document.getElementById("fnombre").value;
    var email = document.getElementById("fcorreo").value;
@@ -106,10 +109,10 @@ const saveUser = (uid, name, email) => {
            name: name,
            email: email
        });
+       
 }
 const logout = () => {
    firebase.auth().signOut().then(() => {
    }).catch((error) => {
    });
 }
-*/

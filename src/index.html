@@ -69,9 +69,9 @@
     <div id="registroCorreo">
       <div class="row">
       </div>
-      <img id="login" src="imgs/img-perfil.png">
+      <img id="login">
       <br>
-      <a id="editarFoto">Editar foto</a>
+    
 
       <h1 class="textoInicio" id="registrate">Regístrate</h1>
       <form>
@@ -94,18 +94,19 @@
           <label class="textForm">Contraseña</label>
           <br>
           <br>
-          <input type="text" id="fcorreo2" name="fnombre">
+          <input type="password" id="fcorreo2" name="fnombre">
         </section>
       </form>
       <button id="register" onclick="register()" class="button register">REGISTRAR</button>
     </div>
 
     <div id="muro">
-      <p id="textoInicio" class="textoInicio">¡Comienza a publicar tus recomendaciones <span id="nombreBienvenida">
-        </span>!</p>
+      <p id="textoInicio" class="textoInicio">¡Comienza a publicar tus recomendaciones!</p>
       <div class="container">
-        <span id="fotoPerfil" src="imgs/img-perfil.png" alt=""></span>
-        <p class="nombreUsuario">Nombre del usuario</p>
+        <div >
+          <div id="fotoPerfil">
+        <img  src="" alt=""></div>
+        <span id= "nombreBienvenida" class="nombreUsuario"></span>
         <p class="txtForm" id="df">Nombre del establecimiento</p>
         <input type="text" id="fname">
         <br>
@@ -120,8 +121,6 @@
         <br>
         <button class="button button1" id="publicar">PUBLICAR</button>
       </div>
-    </div>
-   
   </main>
 
   <script type="text/javascript">
