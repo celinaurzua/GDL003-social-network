@@ -3,14 +3,13 @@
 const loginFacebook = () => {
     let provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(provider).then((result) => {
-        // This gives you a Facebook Access Token.
+        //This gives you a Facebook Access Token.
         let token = result.credential.accessToken;
         console.log("result", result)
-        // The signed-in user info.
+        //The signed-in user info.
         let user = result.user;
         let bienvenida = document.getElementById("nombreBienvenida")
         bienvenida.innerHTML(user.displayName)
-
         let datos = {
             nombre: user.displayName,
             edad: 13,
@@ -19,7 +18,6 @@ const loginFacebook = () => {
         write("users",datos)
     });
 }
-
 
 const posts = () => {
     let establecimiento = document.getElementById("fname").value;
