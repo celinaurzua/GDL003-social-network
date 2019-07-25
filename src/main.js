@@ -7,7 +7,6 @@ logIn.style.display = "block";
 registro.style.display = "none"
 muro.style.display="none";
 menu.style.display="none"
-publicaciones.style.display="none"
 
 
   const mostrarMuroFb = () => {
