@@ -2,7 +2,6 @@ let muro = document.getElementById("muro");
 let logIn = document.getElementById("logIn");
 let menu = document.getElementById("navigation")
 let registro = document.getElementById("registroCorreo")
-let publicaciones = document.getElementById("comienzanPublicaciones")
 logIn.style.display = "block";
 registro.style.display = "none"
 muro.style.display="none";
@@ -10,13 +9,12 @@ menu.style.display="none"
 
 
   const mostrarMuroFb = () => {
-     let loginFB = loginFacebook();
+    let loginFB = loginFacebook();
     
     menu.style.display="block"
     muro.style.display = "block";
     logIn.style.display = "none";
     registro.style.display = "none"
-    publicaciones.style.display="block"
   }
   document.getElementById("loginFacebook").addEventListener("click", mostrarMuroFb);
   document.getElementById("publicar").addEventListener("click", posts);
