@@ -3,19 +3,21 @@
 const loginFacebook = () => {
     let provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(provider).then((result) => {
-        //This gives you a Facebook Access Token.
+        // This gives you a Facebook Access Token.
         let token = result.credential.accessToken;
         console.log("result", result)
-        //The signed-in user info.
+        // The signed-in user info.
         let user = result.user;
         console.log(result.user);
         console.log(user.displayName)
+        console.log(user.email)
         let bienvenida = document.getElementById("nombreBienvenida")
-
         bienvenida.innerHTML=user.displayName
         document.getElementById("fotoPerfil").innerHTML = `<img src="${user.photoURL}">`
+        let nombrePost = document.getElementById("nombrePost")
+        nombrePost.innerHTML=user.displayName
+        document.getElementById("fotoPost").innerHTML = `<img src="${user.photoURL}">`
         
-
             let datos = {
                 nombre: user.displayName,
                 imagen: user.photoURL,
@@ -23,7 +25,6 @@ const loginFacebook = () => {
             };
             console.log(datos)
             write("users", datos, "")
-
     });
 }
 
@@ -82,7 +83,7 @@ let login = (email, password) => {
 const register = () => {
    var name = document.getElementById("fnombre").value;
    var email = document.getElementById("fcorreo").value;
-   var password = document.getElementById("fcorreo").value;
+   var password = document.getElementById("fpassword").value;
    firebase.auth().createUserWithEmailAndPassword(email, password)
        .then((result) => {
            console.log(result)
@@ -101,7 +102,15 @@ const register = () => {
                alert("E-mail invalido.");
            }
        })
-}
+       let llenado = {
+        name: name,
+        email: email,
+        password: password
+    };
+    console.log(llenado);
+    write("usersNews", llenado, "")
+
+    }
 const saveUser = (uid, name, email) => {
    firebase.database().ref('users/' + uid).
        set({
