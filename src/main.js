@@ -20,14 +20,14 @@ menu.style.display="none"
   document.getElementById("publicar").addEventListener("click", posts);
   
   const mostrarMuroGoogle = () => {
-    let loginFB = loginGoogle();
+    let loginGoo = loginGoogle();
     
     menu.style.display="block"
     muro.style.display = "block";
     logIn.style.display = "none";
     registro.style.display = "none"
   }
-  document.getElementById("google").addEventListener("click", mostrarMuroFb);
+  document.getElementById("google").addEventListener("click", mostrarMuroGoogle);
   document.getElementById("publicar").addEventListener("click", posts);
 
 

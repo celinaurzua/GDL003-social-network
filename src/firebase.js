@@ -8,10 +8,10 @@ const loginFacebook = () => {
         // The signed-in user info.
         let user = result.user;
         let bienvenida = document.getElementById("nombreBienvenida")
-        bienvenida.innerHTML = user.displayName
+        bienvenida.innerHTML=user.displayName
         document.getElementById("fotoPerfil").innerHTML = `<img src="${user.photoURL}">`
         let nombrePost = document.getElementById("nombrePost")
-        nombrePost.innerHTML = user.displayName
+        nombrePost.innerHTML=user.displayName
         document.getElementById("fotoPost").innerHTML = `<img src="${user.photoURL}">`
         
             let datos = {
@@ -29,6 +29,16 @@ const loginGoogle = () =>{
             let token = result.credential.accessToken;
             let user = result.user;
             console.log(user);
+            console.log(user.displayName);
+            console.log(user.photoURL);
+            console.log(user.email);
+            let bienvenida = document.getElementById("nombreBienvenida")
+        bienvenida.innerHTML=user.displayName
+        document.getElementById("fotoPerfil").innerHTML = `<img src="${user.photoURL}">`
+        let nombrePost = document.getElementById("nombrePost")
+        nombrePost.innerHTML=user.displayName
+        document.getElementById("fotoPost").innerHTML = `<img src="${user.photoURL}">`
+            
         }).catch((error)=> {
             let errorCode = error.code;
             let errorMessage = error.message;
@@ -37,12 +47,6 @@ const loginGoogle = () =>{
 
             if (errorCode==='aut/account-exists-with-different-credential'){
                 alert ('Es el mismo usuario')
-                let bienvenida = document.getElementById("nombreBienvenida")
-        bienvenida.innerHTML=user.displayName
-        document.getElementById("fotoPerfil").innerHTML = `<img src="${user.photoURL}">`
-        let nombrePost = document.getElementById("nombrePost")
-        nombrePost.innerHTML=user.displayName
-        document.getElementById("fotoPost").innerHTML = `<img src="${user.photoURL}">`
             }
         })
     }
@@ -128,20 +132,18 @@ const register = () => {
     console.log(llenado);
     write("usersNews", llenado, "")
 
-}
+    }
 const saveUser = (uid, name, email) => {
-    firebase.database().ref('users/' + uid)
-        .push({
-            id: uid,
-            name: name,
-            email: email
-        });
-    console.log(user)
-
-
+   firebase.database().ref('users/' + uid).
+       set({
+           id: uid,
+           name: name,
+           email: email
+       });
+       
 }
 const logout = () => {
-    firebase.auth().signOut().then(() => {
-    }).catch((error) => {
-    });
+   firebase.auth().signOut().then(() => {
+   }).catch((error) => {
+   });
 }
