@@ -5,12 +5,8 @@ const loginFacebook = () => {
     firebase.auth().signInWithPopup(provider).then((result) => {
         // This gives you a Facebook Access Token.
         let token = result.credential.accessToken;
-        console.log("result", result)
         // The signed-in user info.
         let user = result.user;
-        console.log(result.user);
-        console.log(user.displayName)
-        console.log(user.email)
         let bienvenida = document.getElementById("nombreBienvenida")
         bienvenida.innerHTML=user.displayName
         document.getElementById("fotoPerfil").innerHTML = `<img src="${user.photoURL}">`
@@ -23,10 +19,35 @@ const loginFacebook = () => {
                 imagen: user.photoURL,
                 email: user.email
             };
-            console.log(datos)
             write("users", datos, "")
     });
 }
+
+const loginGoogle = () =>{
+    let provider= new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider).then((result)=> {
+            let token = result.credential.accessToken;
+            let user = result.user;
+            console.log(user);
+        }).catch((error)=> {
+            let errorCode = error.code;
+            let errorMessage = error.message;
+            let errorEmail= error.email;
+            let credential= error.credential;
+
+            if (errorCode==='aut/account-exists-with-different-credential'){
+                alert ('Es el mismo usuario')
+                let bienvenida = document.getElementById("nombreBienvenida")
+        bienvenida.innerHTML=user.displayName
+        document.getElementById("fotoPerfil").innerHTML = `<img src="${user.photoURL}">`
+        let nombrePost = document.getElementById("nombrePost")
+        nombrePost.innerHTML=user.displayName
+        document.getElementById("fotoPost").innerHTML = `<img src="${user.photoURL}">`
+            }
+        })
+    }
+
+document.getElementById("google").addEventListener('click',loginGoogle,false);
 
 const posts = () => {
     let establecimiento = document.getElementById("fname").value;
@@ -58,7 +79,6 @@ const write = (collection, json, id) => {
 window.guanataco = {
     loginFacebook
 };
-
 /*
 
 let login = (email, password) => {
@@ -86,12 +106,10 @@ const register = () => {
    var password = document.getElementById("fpassword").value;
    firebase.auth().createUserWithEmailAndPassword(email, password)
        .then((result) => {
-           console.log(result)
            const user = result.user;
            saveUser(user.uid, name, user.email);
        })
        .catch((error) => {
-           console.log(error)
            let errorCode = error.code;
            let errorMessage = error.message;
            if (error.message === 'The email address is already in use by another account.') {
