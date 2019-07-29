@@ -1,0 +1,72 @@
+
+
+#card {
+  background: #f2f2f2;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 0;
+  width: 60%;
+}
+
+#imgAvatar {
+  text-align: center;
+  margin: 0 auto;
+  border: 2px solid #ffd35b;
+  border-radius: 50%;
+  margin: 10px;
+
+  max-width: 80px;
+}
+#commentNameUser{
+  font-family: "Muli", sans-serif;
+  color: #503291;
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#commentText {
+  font-family: "Muli", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #656565;
+  text-align: center;
+  margin: 0; 
+
+}
+.buttonIcon {
+  float: none;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 30%;
+}
+.far {
+  margin: 20px 0 0 0;
+  color: #503291;
+  cursor: pointer;
+  font-size: 200%;
+  padding: 3px;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.icon {
+  margin: 20px 0;
+  color: #656565;
+  font-family: "Muli", sans-serif;
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+}
+.fa-smile:hover {
+  transform: scale(1.5);
+}
+.fa-meh:hover {
+  transform: scale(1.5);
+}
+.fa-frown:hover {
+  transform: scale(1.5);
+}
