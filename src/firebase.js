@@ -12,19 +12,19 @@ const loginFacebook = () => {
         console.log(user.displayName)
         console.log(user.email)
         let bienvenida = document.getElementById("nombreBienvenida")
-        bienvenida.innerHTML=user.displayName
+        bienvenida.innerHTML = user.displayName
         document.getElementById("fotoPerfil").innerHTML = `<img src="${user.photoURL}">`
         let nombrePost = document.getElementById("nombrePost")
-        nombrePost.innerHTML=user.displayName
+        nombrePost.innerHTML = user.displayName
         document.getElementById("fotoPost").innerHTML = `<img src="${user.photoURL}">`
-        
-            let datos = {
-                nombre: user.displayName,
-                imagen: user.photoURL,
-                email: user.email
-            };
-            console.log(datos)
-            write("users", datos, "")
+
+        let datos = {
+            nombre: user.displayName,
+            imagen: user.photoURL,
+            email: user.email
+        };
+        console.log(datos)
+        write("users", datos, "")
     });
 }
 
@@ -81,28 +81,28 @@ let login = (email, password) => {
 }
 */
 const register = () => {
-   var name = document.getElementById("fnombre").value;
-   var email = document.getElementById("fcorreo").value;
-   var password = document.getElementById("fpassword").value;
-   firebase.auth().createUserWithEmailAndPassword(email, password)
-       .then((result) => {
-           console.log(result)
-           const user = result.user;
-           saveUser(user.uid, name, user.email);
-       })
-       .catch((error) => {
-           console.log(error)
-           let errorCode = error.code;
-           let errorMessage = error.message;
-           if (error.message === 'The email address is already in use by another account.') {
-               alert("El email ya está registrado.");
-           } else if (error.message === 'Password should be at least 6 characters') {
-               alert("La contraseña debe tener almenos 6 caracteres");
-           } else if (error.message === 'The email address is badly formatted.') {
-               alert("E-mail invalido.");
-           }
-       })
-       let llenado = {
+    var name = document.getElementById("fnombre").value;
+    var email = document.getElementById("fcorreo").value;
+    var password = document.getElementById("fpassword").value;
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((result) => {
+            console.log(result)
+            const user = result.user;
+            saveUser(user.uid, name, user.email);
+        })
+        .catch((error) => {
+            console.log(error)
+            let errorCode = error.code;
+            let errorMessage = error.message;
+            if (error.message === 'The email address is already in use by another account.') {
+                alert("El email ya está registrado.");
+            } else if (error.message === 'Password should be at least 6 characters') {
+                alert("La contraseña debe tener almenos 6 caracteres");
+            } else if (error.message === 'The email address is badly formatted.') {
+                alert("E-mail invalido.");
+            }
+        })
+    let llenado = {
         name: name,
         email: email,
         password: password
@@ -110,18 +110,20 @@ const register = () => {
     console.log(llenado);
     write("usersNews", llenado, "")
 
-    }
+}
 const saveUser = (uid, name, email) => {
-   firebase.database().ref('users/' + uid).
-       set({
-           id: uid,
-           name: name,
-           email: email
-       });
-       
+    firebase.database().ref('users/' + uid)
+        .push({
+            id: uid,
+            name: name,
+            email: email
+        });
+    console.log(user)
+
+
 }
 const logout = () => {
-   firebase.auth().signOut().then(() => {
-   }).catch((error) => {
-   });
+    firebase.auth().signOut().then(() => {
+    }).catch((error) => {
+    });
 }
