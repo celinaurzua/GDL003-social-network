@@ -49,7 +49,7 @@ const loginGoogle = () => {
             imagen: user.photoURL,
             email: user.email
         };
-        write("userGoogle", datos, "")
+        write("users", datos, "")
     }).catch((error) => {
         let errorCode = error.code;
         let errorMessage = error.message;
@@ -81,19 +81,13 @@ const posts = () => {
 
 //Fun para escribir en la base de datos
 const write = (collection, json, id) => {
-    console.log("ID", id)
     db.collection(collection).doc(id).set(json)
         .then(function (docRef) {
-            console.log("Document written with ID: ", docRef.id);
         })
         .catch(function (error) {
             console.error("Error adding document: ", error);
         });
 }
-
-window.guanataco = {
-    loginFacebook
-};
 
 let login = (email, password) => {
     var email = document.getElementById("emailLogin").value;
@@ -139,7 +133,7 @@ const register = () => {
         password: password
     };
     console.log(llenado);
-    write("usersNews", llenado, "")
+    write("users", llenado, "")
 
 }
 const saveUser = (uid, name, email) => {
@@ -157,3 +151,7 @@ const logout = () => {
     }).catch((error) => {
     });
 }
+
+window.guanataco = {
+    loginFacebook
+};

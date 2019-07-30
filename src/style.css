@@ -97,11 +97,16 @@ input[type="password"] {
 #fotoPerfil {
   margin: 0 auto;
   text-align: center;
+
 }
 img {
   border-radius: 50%;
   border: 2px solid #ffd35b;
+  width: 50px;
+
 }
+
+
 #botonRegistrar {
   margin-top: 0;
   margin-bottom: 50px;
@@ -236,6 +241,7 @@ input[type="submit"] {
   }
   #logo {
     width: 20%;
+
   }
   input[type="text"] {
     width: 60%;
