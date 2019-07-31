@@ -15,7 +15,7 @@ const mostrarMuroFb = () => {
     registro.style.display = "none"
   
 }
-document.getElementById("loginFacebook").addEventListener("click", loginFacebook);
+document.getElementById("Facebook").addEventListener("click", loginFacebook);
 document.getElementById("publicar").addEventListener("click", posts);
 
 const mostrarMuroGoogle = () => {

@@ -21,35 +21,32 @@ const loginFacebook = () => {
             email: user.email
         };
         write("users", datos, firebase.auth().currentUser.uid)
+        printPosts();
         return result;
     }, (error) => {
         console.log(error)
     });
-    return provider;
 }
 
 const loginGoogle = () => {
     let provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then((result) => {
+
         mostrarMuroGoogle();
-        let token = result.credential.accessToken;
         let user = result.user;
-        console.log(user);
-        console.log(user.displayName);
-        console.log(user.photoURL);
-        console.log(user.email);
         let bienvenida = document.getElementById("nombreBienvenida")
         bienvenida.innerHTML = user.displayName
         document.getElementById("fotoPerfil").innerHTML = `<img src="${user.photoURL}">`
         let nombrePost = document.getElementById("nombrePost")
-        nombrePost.innerHTML = user.displayName
-        document.getElementById("fotoPost").innerHTML = `<img src="${user.photoURL}">`
+        //nombrePost.innerHTML = user.displayName
+
         let datos = {
             nombre: user.displayName,
             imagen: user.photoURL,
             email: user.email
         };
-        write("users", datos, "")
+
+        write("users", datos, firebase.auth().currentUser.uid)
     }).catch((error) => {
         let errorCode = error.code;
         let errorMessage = error.message;
@@ -74,6 +71,9 @@ const posts = () => {
         establecimiento: establecimiento,
         ubicacion: ubicacion,
         comentario: comentario,
+        userID: firebase.auth().currentUser.uid,
+        displayName: firebase.auth().currentUser.displayName,
+        photoURL: firebase.auth().currentUser.photoURL,
         likes: 0
     }
     write("post", datos, "")
@@ -81,12 +81,22 @@ const posts = () => {
 
 //Fun para escribir en la base de datos
 const write = (collection, json, id) => {
-    db.collection(collection).doc(id).set(json)
-        .then(function (docRef) {
-        })
-        .catch(function (error) {
-            console.error("Error adding document: ", error);
-        });
+    if (id == "") {
+        db.collection(collection).add(json)
+            .then(function (docRef) {
+                console.log(docRef)
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
+    } else {
+        db.collection(collection).doc(id).set(json)
+            .then(function (docRef) {
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
+    }
 }
 
 let login = (email, password) => {
@@ -113,12 +123,23 @@ const register = () => {
     let password = document.getElementById("fpassword").value;
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((result) => {
-            const user = result.user;
-            saveUser(user.uid, name, user.email);
+            var user = firebase.auth().currentUser;
+
+            user.updateProfile({
+                displayName: name,
+                photoURL: "https://example.com/jane-q-user/profile.jpg"
+            }).then(function () {
+                let datos = {
+                    nombre: firebase.auth().currentUser.displayName,
+                    imagen: firebase.auth().currentUser.photoURL,
+                    email: firebase.auth().currentUser.email
+                };
+                write("users", datos, firebase.auth().currentUser.uid)
+            }).catch(function (error) {
+                // An error happened.
+            });
         })
         .catch((error) => {
-            let errorCode = error.code;
-            let errorMessage = error.message;
             if (error.message === 'The email address is already in use by another account.') {
                 alert("El email ya está registrado.");
             } else if (error.message === 'Password should be at least 6 characters') {
@@ -127,31 +148,62 @@ const register = () => {
                 alert("E-mail invalido.");
             }
         })
-    let llenado = {
-        name: name,
-        email: email,
-        password: password
-    };
-    console.log(llenado);
-    write("users", llenado, "")
-
 }
-const saveUser = (uid, name, email) => {
-    firebase.database().ref('users/' + uid).
-        set({
-            id: uid,
-            name: name,
-            email: email
+
+const printPosts = async () => {
+    const posts = document.getElementById("divPosts")
+    let output = '';
+    db.collection("post").get()
+        .then(function (query) {
+            query.forEach(document => {
+                datos = document.data();
+                
+                output += `
+                <section id="card">
+                    <img id="imgAvatar" src="${datos.photoURL}" />
+                    <div id="commentNameUser">
+                        ${datos.displayName}
+                    </div>
+                    <br />
+                    <div id="commentText">
+                        <p><strong>Nombre del establecimiento:</strong><span id="nombrePrintPost">${datos.establecimiento}</span></p>
+                        <p><strong>Ubicación:</strong><span id="ubicacionPrintPost">${datos.ubicacion}</span></p>
+                        <p><strong>Comentario:</strong><span id="comentarioPrintPost">${datos.comentario}</span></p>
+                    </div>
+                    <br />
+                    <div class="buttonIcon">
+                        <i class="far fa-smile"></i>
+                        <p class="icon"><span>XX</span> Bueno</p>
+                    </div>
+                    <div class="buttonIcon">
+                        <i class="far fa-meh"></i>
+                        <p class="icon"><span>XX</span> Regular</p>
+                    </div>
+                    <div class="buttonIcon">
+                        <i class="far fa-frown"></i>
+                        <p class="icon"><span>XX</span> Malo</p>
+                    </div>
+                </section>
+                `
+            });
+            posts.innerHTML = output;
+        })
+        .catch(function (error) {
+            console.log("Error getting documents: ", error);
         });
 
 }
 const logout = () => {
     firebase.auth().signOut().then(() => {
-        console.log("hola")
+        console.log("Logged out")
     }).catch((error) => {
     });
 }
 
 window.guanataco = {
-    loginFacebook
+
+    loginGoogle,
+    logout,
+    loginFacebook,
+    posts
 };

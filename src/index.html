@@ -62,7 +62,7 @@
       <button id="botonIngresar" onclick="login()" class="button button1">INGRESAR</button>
       <br>
       <p class="sinregistrotxt">Ingresa con facebook o gmail</p>
-      <button id="loginFacebook"><i class="fab fa-facebook-f"></i></button>
+      <button id="Facebook"><i class="fab fa-facebook-f"></i></button>
       <button id="google"><i class="fab fa-google"></i></button>
       <br>
       <p class="sinregistrotxt">o regístrate</p>
@@ -74,7 +74,7 @@
       </div>
       <img id="login">
       <br>
-    
+
 
       <h1 class="textoInicio" id="registrate">Regístrate</h1>
       <form>
@@ -106,64 +106,63 @@
     <div id="muro">
       <p id="textoInicio" class="textoInicio">¡Comienza a publicar tus recomendaciones!</p>
       <div class="container">
-        <div >
+        <div>
           <div id="fotoPerfil">
-        <img  class="imgGoogle" src="" alt=""></div>
-        <span id= "nombreBienvenida" class="nombreUsuario"></span>
-        <p class="txtForm" id="df">Nombre del establecimiento</p>
-        <input type="text" id="fname">
-        <br>
-        <p class="txtForm">Ubicación</p>
-        <input type="text" id="lname">
-        <p class="txtForm">Comentario</p>
-        <textarea id="subject" style="height:100px"></textarea>
-        <select>
-          <option>Público</option>
-          <option>Privado</option>
-        </select>
-        <br>
-        <button class="button button1" id="publicar">PUBLICAR</button>
+            <img class="imgGoogle" src="" alt=""></div>
+          <span id="nombreBienvenida" class="nombreUsuario"></span>
+          <p class="txtForm" id="df">Nombre del establecimiento</p>
+          <input type="text" id="fname">
+          <br>
+          <p class="txtForm">Ubicación</p>
+          <input type="text" id="lname">
+          <p class="txtForm">Comentario</p>
+          <textarea id="subject" style="height:100px"></textarea>
+          <select>
+            <option>Público</option>
+            <option>Privado</option>
+          </select>
+          <br>
+          <button class="button button1" id="publicar">PUBLICAR</button>
+        </div>
       </div>
-    </div>
-    <p class="textoInicio">¡Explora nuevos lugares!</p>
+      <p class="textoInicio">¡Explora nuevos lugares!</p>
 
-
-      <section id="card">
-        <img
-          id="imgAvatar"
-          src="https://randomuser.me/api/portraits/women/96.jpg"/>
-        <div id="commentNameUser">
-          Nombre Usuario
-        </div>
-        <br />
-        <div id="commentText">
-          <p><strong>Nombre del establecimiento:</strong><span id="nombrePrintPost">asjfasijcvkajicjeñj</span></p>
-          <p><strong>Ubicación:</strong><span id="ubicacionPrintPost">asjfasijcvkajicjeñj</span></p>
-          <p><strong>Comentario:</strong><span id="comentarioPrintPost">asjfasijcvkajicjeñj</span></p>
-        </div>
-        <br />
-        <div class="buttonIcon">
-          <i class="far fa-smile"></i>
-          <p class="icon"><span>XX</span> Bueno</p>
-        </div>
-        <div class="buttonIcon">
-          <i class="far fa-meh"></i>
-          <p class="icon"><span>XX</span> Regular</p>
-        </div>
-        <div class="buttonIcon">
-          <i class="far fa-frown"></i>
-          <p class="icon"><span>XX</span> Malo</p>
-        </div>
-      </section>
+      <div id="divPosts">
+        <!--<section id="card">
+          <img id="imgAvatar" src="https://randomuser.me/api/portraits/women/96.jpg" />
+          <div id="commentNameUser">
+            Nombre Usuario
+          </div>
+          <br />
+          <div id="commentText">
+            <p><strong>Nombre del establecimiento:</strong><span id="nombrePrintPost">asjfasijcvkajicjeñj</span></p>
+            <p><strong>Ubicación:</strong><span id="ubicacionPrintPost">asjfasijcvkajicjeñj</span></p>
+            <p><strong>Comentario:</strong><span id="comentarioPrintPost">asjfasijcvkajicjeñj</span></p>
+          </div>
+          <br />
+          <div class="buttonIcon">
+            <i class="far fa-smile"></i>
+            <p class="icon"><span>XX</span> Bueno</p>
+          </div>
+          <div class="buttonIcon">
+            <i class="far fa-meh"></i>
+            <p class="icon"><span>XX</span> Regular</p>
+          </div>
+          <div class="buttonIcon">
+            <i class="far fa-frown"></i>
+            <p class="icon"><span>XX</span> Malo</p>
+          </div>
+        </section>-->
+      </div>
 
   </main>
 
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-  }
-  
-    
+    }
+
+
   </script>
   <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
