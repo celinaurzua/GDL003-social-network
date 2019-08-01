@@ -13,10 +13,9 @@ const mostrarMuroFb = () => {
     muro.style.display = "block";
     logIn.style.display = "none";
     registro.style.display = "none";
-    window.guanataco.loginFacebook(); 
-    // window.guanataco.printPosts(); 
+  //window.guanataco.printPosts(); 
 }
-document.getElementById("Facebook").addEventListener("click", mostrarMuroFb);
+document.getElementById("Facebook").addEventListener("click", loginFacebook);
 document.getElementById("publicar").addEventListener("click", posts);
 
 const mostrarMuroGoogle = () => {
@@ -24,7 +23,7 @@ const mostrarMuroGoogle = () => {
   muro.style.display = "block";
   logIn.style.display = "none";
   registro.style.display = "none";
-  window.guanataco.loginGoogle(); 
+
   // window.guanataco.printPosts();
 }
 document.getElementById("google").addEventListener("click", loginGoogle);
@@ -40,11 +39,11 @@ const mostrarMuro = () => {
 };
 */
 const regresarLogin = () => {
-  window.guanataco.logout();
   logIn.style.display = "block";
   menu.style.display = "none";
   muro.style.display = "none";
   registro.style.display = "none";
+  logout();
 };
 
 document.getElementById("cerrarSesion").addEventListener("click", regresarLogin);

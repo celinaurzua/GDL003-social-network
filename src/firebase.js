@@ -24,13 +24,14 @@ const loginFacebook = () => {
         return result;
     }, (error) => {
         console.log(error)
+        alert("Ya estas registrado con este correo en otra cuenta, intenta acceder con esa")
     });
 }
 
 const loginGoogle = () => {
     let provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then((result) => {
-
+        
         mostrarMuroGoogle();
         let user = result.user;
         let bienvenida = document.getElementById("nombreBienvenida")
@@ -54,6 +55,7 @@ const loginGoogle = () => {
 
         if (errorCode === 'aut/account-exists-with-different-credential') {
             alert('Es el mismo usuario')
+            console.log(errorCode)
         }
     })
 }
@@ -154,7 +156,7 @@ const posts = () => {
         let output = '';
         let changesArr = snapshot.docs;
         changesArr.forEach(changes => {
-            console.log(changes.data())
+                
             // if(changes.type == "added"){
                 let datos = changes.data();
                 output += `
@@ -255,10 +257,12 @@ const logout = () => {
     });
 };
 
-window.guanataco = {
+
+/*window.guanataco = {
     loginGoogle,
     logout,
     loginFacebook,
     posts,
     // printPosts
 };
+*/
