@@ -21,7 +21,6 @@ const loginFacebook = () => {
             email: user.email
         };
         write("users", datos, firebase.auth().currentUser.uid)
-        printPosts();
         return result;
     }, (error) => {
         console.log(error)
@@ -57,26 +56,6 @@ const loginGoogle = () => {
             alert('Es el mismo usuario')
         }
     })
-}
-
-document.getElementById("google").addEventListener('click', loginGoogle, false);
-
-const posts = () => {
-    let establecimiento = document.getElementById("fname").value;
-    let ubicacion = document.getElementById("lname").value;
-    let comentario = document.getElementById("subject").value;
-
-    let datos = {
-        userID: firebase.auth().currentUser.uid,
-        establecimiento: establecimiento,
-        ubicacion: ubicacion,
-        comentario: comentario,
-        userID: firebase.auth().currentUser.uid,
-        displayName: firebase.auth().currentUser.displayName,
-        photoURL: firebase.auth().currentUser.photoURL,
-        likes: 0
-    }
-    write("post", datos, "")
 }
 
 //Fun para escribir en la base de datos
@@ -148,16 +127,91 @@ const register = () => {
                 alert("E-mail invalido.");
             }
         })
-}
+};
+
+const posts = () => {
+    let establecimiento = document.getElementById("fname").value;
+    let ubicacion = document.getElementById("lname").value;
+    let comentario = document.getElementById("subject").value;
+
+    let datos = {
+        userID: firebase.auth().currentUser.uid,
+        establecimiento: establecimiento,
+        ubicacion: ubicacion,
+        comentario: comentario,
+        userID: firebase.auth().currentUser.uid,
+        displayName: firebase.auth().currentUser.displayName,
+        photoURL: firebase.auth().currentUser.photoURL,
+        likes: 0
+    }
+    write("post", datos, "")
+};
+
+
+// const printPosts = async () => {
+    db.collection("post").onSnapshot(snapshot => {
+        const posts = document.getElementById("divPosts")
+        let output = '';
+        let changesArr = snapshot.docs;
+        changesArr.forEach(changes => {
+            console.log(changes.data())
+            // if(changes.type == "added"){
+                let datos = changes.data();
+                output += `
+                <section id="card">
+                    <img id="imgAvatar" src="${datos.photoURL}" />
+                    <div id="commentNameUser">
+                        ${datos.displayName}
+                    </div>
+                    <br />
+                    <div id="commentText">
+                        <p><strong>Nombre del establecimiento:</strong><span id="nombrePrintPost">${datos.establecimiento}</span></p>
+                        <p><strong>Ubicación:</strong><span id="ubicacionPrintPost">${datos.ubicacion}</span></p>
+                        <p><strong>Comentario:</strong><span id="comentarioPrintPost">${datos.comentario}</span></p>
+                    </div>
+                    <br />
+                    <div class="buttonIcon">
+                        <i class="far fa-smile"></i>
+                        <p class="icon"><span>XX</span> Bueno</p>
+                    </div>
+                    <div class="buttonIcon">
+                        <i class="far fa-meh"></i>
+                        <p class="icon"><span>XX</span> Regular</p>
+                    </div>
+                    <div class="buttonIcon">
+                        <i class="far fa-frown"></i>
+                        <p class="icon"><span>XX</span> Malo</p>
+                    </div>
+                </section>`
+            // }   
+            });
+            posts.innerHTML = output;
+        })
+       // .catch(function (error) {
+       //   console.log("Error getting documents: ", error);
+       //});
+// };
+
+/*
+const printPosts = async () => {
+    const posts = document.getElementById("divPosts")
+    db.collection("post").onSnapshot(snapshot => {
+        let changes = snapshot.docChanges();
+        changes.forEach(change => {
+            if(change.type == "added"){
+
+            }
+            }
+        })
+    });
 
 const printPosts = async () => {
     const posts = document.getElementById("divPosts")
     let output = '';
     db.collection("post").get()
-        .then(function (query) {
-            query.forEach(document => {
-                datos = document.data();
-                
+    .then(function (query) {
+        query.forEach(document => {
+            datos = document.data();
                 output += `
                 <section id="card">
                     <img id="imgAvatar" src="${datos.photoURL}" />
@@ -191,19 +245,20 @@ const printPosts = async () => {
         .catch(function (error) {
             console.log("Error getting documents: ", error);
         });
-
 }
+*/
+
 const logout = () => {
     firebase.auth().signOut().then(() => {
         console.log("Logged out")
     }).catch((error) => {
     });
-}
+};
 
 window.guanataco = {
-
     loginGoogle,
     logout,
     loginFacebook,
-    posts
+    posts,
+    // printPosts
 };

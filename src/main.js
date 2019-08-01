@@ -9,20 +9,23 @@ menu.style.display = "none"
 
 
 const mostrarMuroFb = () => {
-    menu.style.display = "block"
+    menu.style.display = "block";
     muro.style.display = "block";
     logIn.style.display = "none";
-    registro.style.display = "none"
-  
+    registro.style.display = "none";
+    window.guanataco.loginFacebook(); 
+    // window.guanataco.printPosts(); 
 }
-document.getElementById("Facebook").addEventListener("click", loginFacebook);
+document.getElementById("Facebook").addEventListener("click", mostrarMuroFb);
 document.getElementById("publicar").addEventListener("click", posts);
 
 const mostrarMuroGoogle = () => {
   menu.style.display = "block"
   muro.style.display = "block";
   logIn.style.display = "none";
-  registro.style.display = "none"
+  registro.style.display = "none";
+  window.guanataco.loginGoogle(); 
+  // window.guanataco.printPosts();
 }
 document.getElementById("google").addEventListener("click", loginGoogle);
 document.getElementById("publicar").addEventListener("click", posts);
@@ -37,11 +40,11 @@ const mostrarMuro = () => {
 };
 */
 const regresarLogin = () => {
+  window.guanataco.logout();
   logIn.style.display = "block";
   menu.style.display = "none";
   muro.style.display = "none";
   registro.style.display = "none";
-  logout();
 };
 
 document.getElementById("cerrarSesion").addEventListener("click", regresarLogin);
