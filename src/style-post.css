@@ -11,6 +11,7 @@
   margin: 100px 0 10 5px;
   padding: 0;
   text-align: center;
+  transition: all 0.2s;
  }
  #trash{
   color: #b9b9b9;

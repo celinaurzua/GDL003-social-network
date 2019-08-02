@@ -180,9 +180,11 @@ const posts = () => {
     userID: firebase.auth().currentUser.uid,
     displayName: firebase.auth().currentUser.displayName,
     photoURL: firebase.auth().currentUser.photoURL,
-    likes: 0
+    bueno: 0,
+    malo: 0,
+    regular: 0
   };
-  write("post", datos, "");
+  write("post", datos, " ");
 };
 
 // const printPosts = async () => {
@@ -193,106 +195,155 @@ db.collection("post").onSnapshot(snapshot => {
   changesArr.forEach(changes => {
     // if(changes.type == "added"){
     let datos = changes.data();
+
     output += `
-                <section id="card">
-                  <div id="editDelet">
-                    <i id="trash" class="far fa-trash-alt"></i>
-                    <i id="edit" class="far fa-edit"></i>
+              <section id="card">
+                <div id="editDelet">
+                  <i id="trash" class="far fa-trash-alt"></i>
+                  <i id="edit" class="far fa-edit"></i>
+                </div>
+                  <img id="imgAvatar" src="${datos.photoURL}" />
+                  <div id="commentNameUser">
+                      ${datos.displayName}
                   </div>
-                    <img id="imgAvatar" src="${datos.photoURL}" />
-                    <div id="commentNameUser">
-                        ${datos.displayName}
-                    </div>
-                    <br />
-                    <div id="commentText">
-                        <p><strong>Nombre del establecimiento:</strong><span id="nombrePrintPost">${
-                          datos.establecimiento
-                        }</span></p>
-                        <p><strong>Ubicación:</strong><span id="ubicacionPrintPost">${
-                          datos.ubicacion
-                        }</span></p>
-                        <p><strong>Comentario:</strong><span id="comentarioPrintPost">${
-                          datos.comentario
-                        }</span></p>
-                    </div>
-                    <br />
-                    <div class="buttonIcon">
-                        <i class="far fa-smile"></i>
-                        <p class="icon"><span>XX</span> Bueno</p>
-                    </div>
-                    <div class="buttonIcon">
-                        <i class="far fa-meh"></i>
-                        <p class="icon"><span>XX</span> Regular</p>
-                    </div>
-                    <div class="buttonIcon">
-                        <i class="far fa-frown"></i>
-                        <p class="icon"><span>XX</span> Malo</p>
-                    </div>
-                </section>`;
+                  <br />
+                  <div id="commentText">
+                      <p><strong>Nombre del establecimiento:</strong><span id="nombrePrintPost">${
+                        datos.establecimiento
+                      }</span></p>
+                      <p><strong>Ubicación:</strong><span id="ubicacionPrintPost">${
+                        datos.ubicacion
+                      }</span></p>
+                      <p><strong>Comentario:</strong><span id="comentarioPrintPost">${
+                        datos.comentario
+                      }</span></p>
+                  </div>
+                  <br />
+                  <div class="buttonIcon">
+                      <i id="${changes.id}Bueno" class="far fa-smile"></i>
+                      <p class="icon"><span>${datos.bueno}</span> Bueno</p>
+                  </div>
+                  <div class="buttonIcon">
+                      <i id="${changes.id}Regular" class="far fa-meh"></i>
+                      <p class="icon"><span>${datos.regular}</span> Regular</p>
+                  </div>
+                  <div class="buttonIcon">
+                      <i id="${changes.id}Malo" class="far fa-frown"></i>
+                      <p class="icon"><span>${datos.malo}</span> Malo</p>
+                  </div>
+              </section>`;
     // }
   });
   posts.innerHTML = output;
-});
-// .catch(function (error) {
-//   console.log("Error getting documents: ", error);
-//});
-// };
+  
+  
+  
 
-/*
-const printPosts = async () => {
-    const posts = document.getElementById("divPosts")
-    db.collection("post").onSnapshot(snapshot => {
-        let changes = snapshot.docChanges();
-        changes.forEach(change => {
-            if(change.type == "added"){
+  
+  let buttonTrash = document.getElementById("trash");
 
-            }
-            }
-        })
+  buttonTrash.addEventListener("click", alert => {
+    //var txt;
+    
+    // var r = confirm("Seguro que deseas eliminar esta publicación");
+    if (r == true) {
+      // alert("Tu publicación ha sido eliminada");
+     // db.collection("post").doc("id").delete()
+      //.then(()=>{});
+    
+      //(falta hacer tag en HTML)txt = "Tu publicación ha sido cancelada";
+      //db.collection("post").doc("id").delete().then((delet) => {
+      //snapshot()
+      }});
+  /*  else{
+      console.log("Cancelaste la eliminación de este post");
+    }
+    document.getElementById("demo").innerHTML = txt;
+  };*/
+
+
+
+ 
+   /* 
+  .then(function() {
+      console.log("Document successfully deleted!");
+    })
+    .catch(function(error) {
+      console.error("Error removing document: ", error);
     });
-
-const printPosts = async () => {
-    const posts = document.getElementById("divPosts")
-    let output = '';
-    db.collection("post").get()
-    .then(function (query) {
-        query.forEach(document => {
-            datos = document.data();
-                output += `
-                <section id="card">
-                    <img id="imgAvatar" src="${datos.photoURL}" />
-                    <div id="commentNameUser">
-                        ${datos.displayName}
-                    </div>
-                    <br />
-                    <div id="commentText">
-                        <p><strong>Nombre del establecimiento:</strong><span id="nombrePrintPost">${datos.establecimiento}</span></p>
-                        <p><strong>Ubicación:</strong><span id="ubicacionPrintPost">${datos.ubicacion}</span></p>
-                        <p><strong>Comentario:</strong><span id="comentarioPrintPost">${datos.comentario}</span></p>
-                    </div>
-                    <br />
-                    <div class="buttonIcon">
-                        <i class="far fa-smile"></i>
-                        <p class="icon"><span>XX</span> Bueno</p>
-                    </div>
-                    <div class="buttonIcon">
-                        <i class="far fa-meh"></i>
-                        <p class="icon"><span>XX</span> Regular</p>
-                    </div>
-                    <div class="buttonIcon">
-                        <i class="far fa-frown"></i>
-                        <p class="icon"><span>XX</span> Malo</p>
-                    </div>
-                </section>
-                `
-            });
-            posts.innerHTML = output;
-        })
-        .catch(function (error) {
-            console.log("Error getting documents: ", error);
-        });
-}
 */
+
+  let buttonIcon = document.querySelectorAll(".far");
+
+  buttonIcon.forEach(button => {
+    //console.log(button)
+    button.addEventListener("click", btn => {
+      //ID de boton
+      btnID = btn.target.id;
+      //ID del post
+      id = btnID.substring(0, 20);
+      //Tipo de like
+      type = btnID.substring(20, btnID.length);
+      console.log(id);
+      //Consultar el documento en la base de datos que corresponde al id
+
+      var docRef = db.collection("post").doc(id);
+
+      docRef
+        .get()
+        .then(function(doc) {
+          if (doc.exists) {
+            if (type == "Bueno") {
+              let total = doc.data().bueno;
+              total += 1;
+              return docRef
+                .update({
+                  bueno: total
+                })
+                .then(function() {})
+                .catch(function(error) {
+                  // The document probably doesn't exist.
+                  console.error("Error updating document: ", error);
+                });
+            } else if (type == "Malo") {
+              let total = doc.data().malo;
+              total += 1;
+              return docRef
+                .update({
+                  malo: total
+                })
+                .then(function() {})
+                .catch(function(error) {
+                  // The document probably doesn't exist.
+                  console.error("Error updating document: ", error);
+                });
+            } else if (type == "Regular") {
+              let total = doc.data().regular;
+              total += 1;
+              return docRef
+                .update({
+                  regular: total
+                })
+                .then(function() {})
+                .catch(function(error) {
+                  // The document probably doesn't exist.
+                  console.error("Error updating document: ", error);
+                });
+            }
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+        })
+        .catch(function(error) {
+          console.log("Error getting document:", error);
+        });
+      //Extraer el conteo del tipo de like (bueno, malo, regular)
+      //Sumar +1 al tipo de like
+      //escribir al documento el nuevo numero del like
+    });
+  });
+});
 
 const logout = () => {
   firebase
@@ -304,11 +355,12 @@ const logout = () => {
     .catch(error => {});
 };
 
-/*window.guanataco = {
-    loginGoogle,
-    logout,
-    loginFacebook,
-    posts,
-    // printPosts
+
+window.guanataco = {
+  loginGoogle,
+  logout,
+  loginFacebook,
+  posts,
+  // printPosts
 };
-*/
+
