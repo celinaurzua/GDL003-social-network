@@ -30,9 +30,6 @@
         <li>Cerrar sesión</li>
       </a>
       <a>
-        <li>Español</li>
-      </a>
-      <a>
         <li>
           <div id="google_translate_element"></div>
         </li>
@@ -70,37 +67,33 @@
     </div>
 
     <div id="registroCorreo">
-      <div class="row">
-      </div>
-      <img id="login">
-      <br>
 
 
       <h1 class="textoInicio" id="registrate">Regístrate</h1>
       <form>
         <section class="form">
-          <br>
-          <br>
-          <label class="textForm">Nombre completo</label>
-          <br>
-          <br>
+          <p class="textForm">Nombre completo</p>
           <input type="text" id="fnombre" name="fnombre">
         </section>
-        <br>
         <section class="form">
-          <label class="textForm">Correo</label>
-          <br>
+          <p class="textForm">Correo electrónico</p>
           <input type="text" id="fcorreo" name="fcorreo">
         </section>
-        <br>
         <section class="form">
-          <label class="textForm">Contraseña</label>
+        <p class="textForm">Contraseña</p>
+        <input type="password" id="fpassword" name="fpassword">
+        </section>
+        <section class="form">
+          <p class="textForm">Confirmar contraseña</p>
+          <input type="password" id="fpasswordConfirm" name="fpassword">
           <br>
-          <br>
-          <input type="password" id="fpassword" name="fpassword">
+          <span id="messageConfirm"></span> 
         </section>
       </form>
+      <br>
       <button id="register" onclick="register()" class="button register">REGISTRAR</button>
+      <br>
+      <button id="regresarInicio" class="button register">REGRESAR</button>
     </div>
 
     <div id="muro">
@@ -128,31 +121,7 @@
       <p class="textoInicio">¡Explora nuevos lugares!</p>
 
       <div id="divPosts">
-        <!--<section id="card">
-          <img id="imgAvatar" src="https://randomuser.me/api/portraits/women/96.jpg" />
-          <div id="commentNameUser">
-            Nombre Usuario
-          </div>
-          <br />
-          <div id="commentText">
-            <p><strong>Nombre del establecimiento:</strong><span id="nombrePrintPost">asjfasijcvkajicjeñj</span></p>
-            <p><strong>Ubicación:</strong><span id="ubicacionPrintPost">asjfasijcvkajicjeñj</span></p>
-            <p><strong>Comentario:</strong><span id="comentarioPrintPost">asjfasijcvkajicjeñj</span></p>
-          </div>
-          <br />
-          <div class="buttonIcon">
-            <i class="far fa-smile"></i>
-            <p class="icon"><span>XX</span> Bueno</p>
-          </div>
-          <div class="buttonIcon">
-            <i class="far fa-meh"></i>
-            <p class="icon"><span>XX</span> Regular</p>
-          </div>
-          <div class="buttonIcon">
-            <i class="far fa-frown"></i>
-            <p class="icon"><span>XX</span> Malo</p>
-          </div>
-        </section>-->
+
       </div>
 
   </main>
@@ -161,7 +130,6 @@
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
     }
-
 
   </script>
   <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
@@ -176,40 +144,3 @@
 </body>
 
 </html>
-
-
-<!--
-      <div class="containerPublicacion">
-        <p id="nombreComentario">Nombre del usuario</p>
-        <section class="comentario">
-          <p class="txtLugar"><span class="txtComentario">Nombre del establecimiento:</span> Tacos Pedro</p>
-          <p class="txtLugar"><span class="txtComentario">Ubicación:</span> Estadio Jalisco</p>
-          <p class="txtLugar"><span class="txtComentario">Comentario:</span></p>
-          Me gustaron mucho y las salsas también estaban ricas.
-        </section>
-      </div>
-      <div class="containerPublicacion">
-          <p id="nombreComentario">Nombre del usuario</p>
-          <section class="comentario">
-            <p class="txtLugar"><span class="txtComentario">Nombre del establecimiento:</span> Tacos Pedro</p>
-            <p class="txtLugar"><span class="txtComentario">Ubicación:</span> Estadio Jalisco</p>
-            <p class="txtLugar"><span class="txtComentario">Comentario:</span></p>
-            Me gustaron mucho y las salsas también estaban ricas.
-          </section>
-        </div>
-        <div class="containerPublicacion">
-            <p id="nombreComentario">Nombre del usuario</p>
-            <section class="comentario">
-              <p class="txtLugar"><span class="txtComentario">Nombre del establecimiento:</span> Tacos Pedro</p>
-              <p class="txtLugar"><span class="txtComentario">Ubicación:</span> Estadio Jalisco</p>
-              <p class="txtLugar"><span class="txtComentario">Comentario:</span></p>
-              Me gustaron mucho y las salsas también estaban ricas.
-            </section>
-          </div>
-          <div class="btn-group">
-              <button>Apple</button>
-              <button>Samsung</button>
-              <button>Sony</button>
-          </div> 
-    </div>    
-    -->

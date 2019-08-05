@@ -74,6 +74,53 @@ const loginGoogle = () => {
     });
 };
 
+
+let login = (email, password) => {
+  var email = document.getElementById("emailLogin").value;
+  var password = document.getElementById("passwordLogin").value;
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(result => { 
+      posts;
+      let user = result.user;
+      let bienvenida = document.getElementById("nombreBienvenida");
+      bienvenida.innerHTML = user.displayName;
+      document.getElementById("fotoPerfil").innerHTML = `<img src="https://www.iowagcsa.org/resources/Pictures/Member-Login-Icon.png">`;
+
+      let datos = {
+        nombre: user.displayName,
+        imagen: "https://www.iowagcsa.org/resources/Pictures/Member-Login-Icon.png",
+        email: user.email
+      };
+      write("users", datos, firebase.auth().currentUser.uid);
+      /*
+      firebase
+        .database()
+        .ref("/users/" + result.user.uid)
+        .on("value", postsRef => {
+          const userData = postsRef.val();
+          const name = userData.name;
+          console.log("Bienvenido " + name);
+          
+        });
+        */
+      })
+    .catch(error => {
+      if (
+        error.message ===
+        "The password is invalid or the user does not have a password."
+      ) {
+        alert("Contraseña o e-mail invalidos");
+      } else if (
+        error.message ===
+        "There is no user record corresponding to this identifier. The user may have been deleted."
+      ) {
+        alert("El email ingresado no corresponde a un usuario registrado.");
+      }
+    });
+};
+
 //Fun para escribir en la base de datos
 const write = (collection, json, id) => {
   if (id == "") {
@@ -96,52 +143,26 @@ const write = (collection, json, id) => {
   }
 };
 
-let login = (email, password) => {
-  var email = document.getElementById("emailLogin").value;
-  var password = document.getElementById("passwordLogin").value;
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(result => {
-      firebase
-        .database()
-        .ref("/users/" + result.user.uid)
-        .on("value", postsRef => {
-          const userData = postsRef.val();
-          const name = userData.name;
-          console.log("Bienvenido " + name);
-        });
-    })
-    .catch(error => {
-      if (
-        error.message ===
-        "The password is invalid or the user does not have a password."
-      ) {
-        alert("Contraseña o e-mail invalidos");
-      } else if (
-        error.message ===
-        "There is no user record corresponding to this identifier. The user may have been deleted."
-      ) {
-        alert("El email ingresado no corresponde a un usuario registrado.");
-      }
-    });
-};
 const register = () => {
   let name = document.getElementById("fnombre").value;
   let email = document.getElementById("fcorreo").value;
   let password = document.getElementById("fpassword").value;
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
+  let passwordConfirm = document.getElementById("fpasswordConfirm").value;
+  
+  if(password != passwordConfirm){
+    document.getElementById("register").disabled = true;
+    document.getElementById("messageConfirm").innerHTML = "La contraseña no coinciden";
+}else{
+    document.getElementById("messageConfirm").innerHTML = "La contraseña sí coincide";
+    document.getElementById("register").disabled = false;
+
+  firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(result => {
       var user = firebase.auth().currentUser;
-
-      user
-        .updateProfile({
-          displayName: name,
-          photoURL: "https://example.com/jane-q-user/profile.jpg"
+      user.updateProfile({
+        displayName: name,
         })
-        .then(function() {
+        .then( () => {
           let datos = {
             nombre: firebase.auth().currentUser.displayName,
             imagen: firebase.auth().currentUser.photoURL,
@@ -149,12 +170,28 @@ const register = () => {
           };
           write("users", datos, firebase.auth().currentUser.uid);
         })
-        .catch(function(error) {
-          // An error happened.
-        });
+        .catch((error) => {
+          if (error.message === 'The email address is already in use by another account.') {
+              alert("El correo electrónico ya está registrado.");
+          } else if (error.message === 'Password should be at least 6 characters') {
+              alert("La contraseña debe tener almenos 6 caracteres");
+          } else if (error.message === 'The email address is badly formatted.') {
+              alert("Correo electrónico inválido.");
+          }
+      })
     })
+  }
+
+    /*
     .catch(error => {
-      if (
+      if (document.getElementById("fpassword").value ==
+      document.getElementById("fpasswordConfirm").value) {
+      document.getElementById("messageConfirm").innerHTML = 'matching';
+    } else {
+      document.getElementById("messageConfirm").innerHTML = 'not matching';
+    }
+  }
+        if (
         error.message ===
         "The email address is already in use by another account."
       ) {
@@ -164,8 +201,8 @@ const register = () => {
       } else if (error.message === "The email address is badly formatted.") {
         alert("E-mail invalido.");
       }
-    });
-};
+*/ 
+    };
 
 const posts = () => {
   let establecimiento = document.getElementById("fname").value;
@@ -208,13 +245,13 @@ db.collection("post").onSnapshot(snapshot => {
                   </div>
                   <br />
                   <div id="commentText">
-                      <p><strong>Nombre del establecimiento:</strong><span id="nombrePrintPost">${
+                      <p><strong>Nombre del establecimiento:</strong><br><span id="nombrePrintPost">${
                         datos.establecimiento
                       }</span></p>
-                      <p><strong>Ubicación:</strong><span id="ubicacionPrintPost">${
+                      <p><strong>Ubicación:</strong><br><span id="ubicacionPrintPost">${
                         datos.ubicacion
                       }</span></p>
-                      <p><strong>Comentario:</strong><span id="comentarioPrintPost">${
+                      <p><strong>Comentario:</strong><br><span id="comentarioPrintPost">${
                         datos.comentario
                       }</span></p>
                   </div>
@@ -350,7 +387,7 @@ const logout = () => {
     .auth()
     .signOut()
     .then(() => {
-      console.log("Logged out");
+      alert("Seguro que deseas cerrar sesion");
     })
     .catch(error => {});
 };
@@ -360,7 +397,9 @@ window.guanataco = {
   loginGoogle,
   logout,
   loginFacebook,
+  login,
   posts,
+  register
   // printPosts
 };
 
