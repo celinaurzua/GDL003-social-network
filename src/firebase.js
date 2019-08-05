@@ -1,79 +1,78 @@
 // Initialize Firebase
 const loginFacebook = () => {
-  let provider = new firebase.auth.FacebookAuthProvider();
-  firebase
-    .auth()
-    .signInWithPopup(provider)
-    .then(
-      result => {
-        // This gives you a Facebook Access Token.
-        let token = result.credential.accessToken;
-        mostrarMuroFb();
-        // The signed-in user info.
-        let user = result.user;
-        let bienvenida = document.getElementById("nombreBienvenida");
-        bienvenida.innerHTML = user.displayName;
-        document.getElementById("fotoPerfil").innerHTML = `<img src="${
-          user.photoURL
-        }">`;
-        let nombrePost = document.getElementById("nombrePost");
-        //nombrePost.innerHTML = user.displayName
-        //document.getElementById("fotoPost").innerHTML = `<img src="${user.photoURL}">`
+    let provider = new firebase.auth.FacebookAuthProvider();
+    firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(
+            result => {
+                // This gives you a Facebook Access Token.
+                let token = result.credential.accessToken;
+                mostrarMuroFb();
+                // The signed-in user info.
+                let user = result.user;
+                let bienvenida = document.getElementById("nombreBienvenida");
+                bienvenida.innerHTML = user.displayName;
+                document.getElementById("fotoPerfil").innerHTML = `<img src="${
+                    user.photoURL
+                    }">`;
+                let nombrePost = document.getElementById("nombrePost");
+                //nombrePost.innerHTML = user.displayName
+                //document.getElementById("fotoPost").innerHTML = `<img src="${user.photoURL}">`
 
-        let datos = {
-          nombre: user.displayName,
-          imagen: user.photoURL,
-          email: user.email
-        };
-        write("users", datos, firebase.auth().currentUser.uid);
-        return result;
-      },
-      error => {
-        console.log(error);
-        alert(
-          "Ya estas registrado con este correo en otra cuenta, intenta acceder con esa"
+                let datos = {
+                    nombre: user.displayName,
+                    imagen: user.photoURL,
+                    email: user.email
+                };
+                write("users", datos, firebase.auth().currentUser.uid);
+                return result;
+            },
+            error => {
+                console.log(error);
+                alert(
+                    "Ya estas registrado con este correo en otra cuenta, intenta acceder con esa"
+                );
+            }
         );
-      }
-    );
 };
 
 const loginGoogle = () => {
-  let provider = new firebase.auth.GoogleAuthProvider();
-  firebase
-    .auth()
-    .signInWithPopup(provider)
-    .then(result => {
-      mostrarMuroGoogle();
-      let user = result.user;
-      let bienvenida = document.getElementById("nombreBienvenida");
-      bienvenida.innerHTML = user.displayName;
-      document.getElementById("fotoPerfil").innerHTML = `<img src="${
-        user.photoURL
-      }">`;
-      let nombrePost = document.getElementById("nombrePost");
-      //nombrePost.innerHTML = user.displayName
+    let provider = new firebase.auth.GoogleAuthProvider();
+    firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(result => {
+            mostrarMuroGoogle();
+            let user = result.user;
+            let bienvenida = document.getElementById("nombreBienvenida");
+            bienvenida.innerHTML = user.displayName;
+            document.getElementById("fotoPerfil").innerHTML = `<img src="${
+                user.photoURL
+                }">`;
+            let nombrePost = document.getElementById("nombrePost");
+            //nombrePost.innerHTML = user.displayName
 
-      let datos = {
-        nombre: user.displayName,
-        imagen: user.photoURL,
-        email: user.email
-      };
+            let datos = {
+                nombre: user.displayName,
+                imagen: user.photoURL,
+                email: user.email
+            };
 
-      write("users", datos, firebase.auth().currentUser.uid);
-    })
-    .catch(error => {
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      let errorEmail = error.email;
-      let credential = error.credential;
+            write("users", datos, firebase.auth().currentUser.uid);
+        })
+        .catch(error => {
+            let errorCode = error.code;
+            let errorMessage = error.message;
+            let errorEmail = error.email;
+            let credential = error.credential;
 
-      if (errorCode === "aut/account-exists-with-different-credential") {
-        alert("Es el mismo usuario");
-        console.log(errorCode);
-      }
-    });
+            if (errorCode === "aut/account-exists-with-different-credential") {
+                alert("Es el mismo usuario");
+                console.log(errorCode);
+            }
+        });
 };
-
 
 let login = (email, password) => {
   var email = document.getElementById("emailLogin").value;
@@ -102,7 +101,6 @@ let login = (email, password) => {
           const userData = postsRef.val();
           const name = userData.name;
           console.log("Bienvenido " + name);
-          
         });
         */
       })
@@ -144,6 +142,7 @@ const write = (collection, json, id) => {
 };
 
 const register = () => {
+
   let name = document.getElementById("fnombre").value;
   let email = document.getElementById("fcorreo").value;
   let password = document.getElementById("fpassword").value;
@@ -181,47 +180,27 @@ const register = () => {
       })
     })
   }
-
-    /*
-    .catch(error => {
-      if (document.getElementById("fpassword").value ==
-      document.getElementById("fpasswordConfirm").value) {
-      document.getElementById("messageConfirm").innerHTML = 'matching';
-    } else {
-      document.getElementById("messageConfirm").innerHTML = 'not matching';
-    }
-  }
-        if (
-        error.message ===
-        "The email address is already in use by another account."
-      ) {
-        alert("El email ya está registrado.");
-      } else if (error.message === "Password should be at least 6 characters") {
-        alert("La contraseña debe tener almenos 6 caracteres");
-      } else if (error.message === "The email address is badly formatted.") {
-        alert("E-mail invalido.");
-      }
-*/ 
     };
 
 const posts = () => {
-  let establecimiento = document.getElementById("fname").value;
-  let ubicacion = document.getElementById("lname").value;
-  let comentario = document.getElementById("subject").value;
+    let establecimiento = document.getElementById("fname").value;
+    let ubicacion = document.getElementById("lname").value;
+    let comentario = document.getElementById("subject").value;
 
-  let datos = {
-    userID: firebase.auth().currentUser.uid,
-    establecimiento: establecimiento,
-    ubicacion: ubicacion,
-    comentario: comentario,
-    userID: firebase.auth().currentUser.uid,
-    displayName: firebase.auth().currentUser.displayName,
-    photoURL: firebase.auth().currentUser.photoURL,
-    bueno: 0,
-    malo: 0,
-    regular: 0
-  };
-  write("post", datos, " ");
+
+    let datos = {
+        userID: firebase.auth().currentUser.uid,
+        establecimiento: establecimiento,
+        ubicacion: ubicacion,
+        comentario: comentario,
+        userID: firebase.auth().currentUser.uid,
+        displayName: firebase.auth().currentUser.displayName,
+        photoURL: firebase.auth().currentUser.photoURL,
+        bueno: 0,
+        malo: 0,
+        regular: 0
+    };
+    write("post", datos, "");
 };
 
 // const printPosts = async () => {
