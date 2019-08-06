@@ -77,9 +77,9 @@ const loginGoogle = () => {
 };
 
 //Función para logueo con Correo
-let login = (email, password) => {
-  var email = document.getElementById("emailLogin").value;
-  var password = document.getElementById("passwordLogin").value;
+let login = () => {
+  let email = document.getElementById("emailLogin").value;
+  let password = document.getElementById("passwordLogin").value;
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
@@ -87,27 +87,23 @@ let login = (email, password) => {
       posts;
       let user = result.user;
       let bienvenida = document.getElementById("nombreBienvenida");
+      console.log(user)
       bienvenida.innerHTML = user.displayName;
       document.getElementById("fotoPerfil").innerHTML = `<img src="https://www.iowagcsa.org/resources/Pictures/Member-Login-Icon.png">`;
       //Json del logueo con correo
-      let datos = {
+      /*let datos = {
         nombre: user.displayName,
         imagen: "https://www.iowagcsa.org/resources/Pictures/Member-Login-Icon.png",
         email: user.email
-      };
-      //Escribiendo en la data
-      write("users", datos, firebase.auth().currentUser.uid);
+      };*/
+      //Escribiendo en la database
+      //write("users", datos, firebase.auth().currentUser.uid);
+
+      mostrarMuroRegistro();
       
-      firebase
-        .database()
-        .ref("/users/" + result.user.uid)
-        .on("value", postsRef => {
-          const userData = postsRef.val();
-          const name = userData.name;
-          console.log("Bienvenido " + name);
-        });
     })
     .catch(error => {
+      console.log(error.message);
       if (
         error.message ===
         "The password is invalid or the user does not have a password."
@@ -119,6 +115,7 @@ let login = (email, password) => {
       ) {
         alert("El email ingresado no corresponde a un usuario registrado.");
       }
+      
     });
 };
 
@@ -167,7 +164,7 @@ const register = () => {
         user.updateProfile({
           displayName: name,
         })
-        //Json del registro de nuevos usuarios
+          //Json del registro de nuevos usuarios
           .then(() => {
             let datos = {
               nombre: firebase.auth().currentUser.displayName,
@@ -194,7 +191,7 @@ const posts = () => {
   let establecimiento = document.getElementById("fname").value;
   let ubicacion = document.getElementById("lname").value;
   let comentario = document.getElementById("subject").value;
-//Json de post
+  //Json de post
   let datos = {
     userID: firebase.auth().currentUser.uid,
     establecimiento: establecimiento,
@@ -253,7 +250,7 @@ db.collection("post").onSnapshot(snapshot => {
   });
   posts.innerHTML = output;
 
-//Función para eliminar post
+  //Función para eliminar post
   let buttonDelete = document.querySelectorAll(".delete");
   buttonDelete.forEach(btnDel => {
     btnDel.addEventListener("click", btnD => {
@@ -271,7 +268,7 @@ db.collection("post").onSnapshot(snapshot => {
         db.collection("post").doc(id).delete().then(() => {
         }).catch((error) => {
         });
-      }else {
+      } else {
         console.log("Cancelaste la eliminación de este post");
       }
 
