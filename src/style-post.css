@@ -13,16 +13,21 @@
   text-align: center;
   transition: all 0.2s;
  }
- #trash{
+ .fa-trash-alt{
   color: #b9b9b9;
   font-size: 150%;
   display: inline;
-  margin: 20px 20px 0 0;
+  margin: 20px 10px 10px 0;
+  cursor: pointer;
+  transition: all 0.2s;
  }
- #edit{
+ .fa-edit{
   color: #b9b9b9;
   font-size: 150%;
   display: inline;
+  margin: 20px 0 10px 10px;
+  cursor: pointer;
+  transition: all 0.2s;
  }
  .fa-trash-alt:hover {
   transform: scale(1.5);
@@ -66,7 +71,7 @@
   text-align: center;
   width: 30%;
 }
-.far {
+.like {
   margin: 20px 0 0 0;
   color: #503291;
   cursor: pointer;
