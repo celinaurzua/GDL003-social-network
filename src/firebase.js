@@ -292,7 +292,7 @@ db.collection("post").onSnapshot(snapshot => {
         document.getElementById(id + "comentarioPrintPost").disabled = false
 
         let btnGuardar = document.getElementById(id + "Guardar")
-        btnGuardar.style.display = 'block';
+        btnGuardar.style.display = 'block', "inline";
 
         btnGuardar.addEventListener("click", btn => {
           let nombre = document.getElementById(id + "nombrePrintPost").value
@@ -326,8 +326,9 @@ db.collection("post").onSnapshot(snapshot => {
         var txt;
         var r = confirm("Seguro que deseas eliminar esta publicación");
         if (r == true) {
-          alert("Tu publicación ha sido eliminada");
+
           db.collection("post").doc(id).delete().then(() => {
+            alert("Tu publicación ha sido eliminada");
           }).catch((error) => {
           });
         } else {
