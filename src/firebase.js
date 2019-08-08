@@ -100,7 +100,7 @@ let login = () => {
       //write("users", datos, firebase.auth().currentUser.uid);
 
       mostrarMuroRegistro();
-      
+
     })
     .catch(error => {
       console.log(error.message);
@@ -115,7 +115,7 @@ let login = () => {
       ) {
         alert("El email ingresado no corresponde a un usuario registrado.");
       }
-      
+
     });
 };
 
@@ -142,6 +142,12 @@ const write = (collection, json, id) => {
       });
   }
 };
+
+const update = (id, data) => {
+
+  let refPost = firebase.firestore().collection('post').doc(id);
+  return refPost.update(data);
+}
 
 //Función para el registro de nuevos usuarios con correo
 const register = () => {
@@ -186,6 +192,17 @@ const register = () => {
       })
   }
 };
+
+const validarUsuario = (postUser) => {
+  let currentUser = firebase.auth().currentUser.uid;
+  if (currentUser == postUser) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 //Función para crear post desde el formulario a database
 const posts = () => {
   let establecimiento = document.getElementById("fname").value;
@@ -209,6 +226,7 @@ const posts = () => {
 };
 // const printPosts = async () => {
 //Leyendo database para imprimir post
+
 db.collection("post").onSnapshot(snapshot => {
   const posts = document.getElementById("divPosts");
   let output = "";
@@ -217,7 +235,13 @@ db.collection("post").onSnapshot(snapshot => {
     // if(changes.type == "added"){
     let datos = changes.data();
 
+    
+    if(datos.photoURL == null){
+      datos.photoURL = "https://www.iowagcsa.org/resources/Pictures/Member-Login-Icon.png"
+    }
+
     output += `
+              <span id="${changes.id}UserID" hidden>${datos.userID}</span>
               <section id="card">
                 <div id="editDelet">
                   <i id="${changes.id}trash" class="far fa-trash-alt delete"></i>
@@ -233,6 +257,7 @@ db.collection("post").onSnapshot(snapshot => {
                       <p><strong>Ubicación:</strong><br><textarea disabled id="${changes.id}ubicacionPrintPost">${datos.ubicacion}</textarea></p>
                       <p><strong>Comentario:</strong><br><textarea disabled id="${changes.id}comentarioPrintPost">${datos.comentario}</textarea></p>
                   </div>
+                  <button hidden id="${changes.id}Guardar">Guardar</button>
                   <br />
                   <div class="buttonIcon">
                       <i id="${changes.id}Bueno" class="far fa-smile like"></i>
@@ -252,47 +277,67 @@ db.collection("post").onSnapshot(snapshot => {
 
   //Función para editar post
   let buttonEdit = document.querySelectorAll(".edit");
-  buttonEdit.forEach(btnEdit =>{
-    btnEdit.addEventListener("click",btnE =>{
+  buttonEdit.forEach(btnEdit => {
+    btnEdit.addEventListener("click", btnE => {
+
       //ID del boton
       btnID = btnE.target.id;
       //ID del post
       id = btnID.substring(0, 20);
 
-      document.getElementById(id+"nombrePrintPost").disabled=false
-      document.getElementById(id+"ubicacionPrintPost").disabled=false
-      document.getElementById(id+"comentarioPrintPost").disabled=false
-      
-      //Boton  
-      type = btnID.substring(20, btnID.length);
-      console.log(id)
+      let username = document.getElementById(id + "UserID")
+
+      if ((validarUsuario(username.textContent))) {
+        
+
+        document.getElementById(id + "nombrePrintPost").disabled = false
+        document.getElementById(id + "ubicacionPrintPost").disabled = false
+        document.getElementById(id + "comentarioPrintPost").disabled = false
+
+        let btnGuardar = document.getElementById(id + "Guardar")
+        btnGuardar.style.display = 'block';
+
+        btnGuardar.addEventListener("click", btn => {
+          let nombre = document.getElementById(id + "nombrePrintPost").value
+          let ubicacion = document.getElementById(id + "ubicacionPrintPost").value
+          let comentario = document.getElementById(id + "comentarioPrintPost").value
+
+          let data = {
+            comentario: comentario,
+            establecimiento: nombre,
+            ubicacion: ubicacion
+          }
+          update(id, data);
+        })
+      }
+
     })
   })
-
-
 
   //Función para eliminar post
   let buttonDelete = document.querySelectorAll(".delete");
   buttonDelete.forEach(btnDel => {
     btnDel.addEventListener("click", btnD => {
       //ID del boton
-      btnID = btnD.target.id;
-      //ID del post
-      id = btnID.substring(0, 20);
-      //Boton  
-      type = btnID.substring(20, btnID.length);
-      console.log(id);
-      var txt;
-      var r = confirm("Seguro que deseas eliminar esta publicación");
-      if (r == true) {
-        alert("Tu publicación ha sido eliminada");
-        db.collection("post").doc(id).delete().then(() => {
-        }).catch((error) => {
-        });
-      } else {
-        console.log("Cancelaste la eliminación de este post");
-      }
+    btnID = btnD.target.id;
+    //ID del post
+    id = btnID.substring(0, 20);
 
+    let username = document.getElementById(id + "UserID")
+
+      if (validarUsuario(username.textContent)) {
+        console.log(id);
+        var txt;
+        var r = confirm("Seguro que deseas eliminar esta publicación");
+        if (r == true) {
+          alert("Tu publicación ha sido eliminada");
+          db.collection("post").doc(id).delete().then(() => {
+          }).catch((error) => {
+          });
+        } else {
+          console.log("Cancelaste la eliminación de este post");
+        }
+      }
     })
   })
 
