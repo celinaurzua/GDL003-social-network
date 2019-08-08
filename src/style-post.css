@@ -29,6 +29,17 @@
   cursor: pointer;
   transition: all 0.2s;
  }
+ {
+ display: inline !important;
+ margin: 0 auto;
+ text-align: center;
+ color: #503291;
+ font-size: 100%;
+ display: inline;
+ margin: 20px 0 10px 10px;
+ cursor: pointer;
+ transition: all 0.2s;
+}
  .fa-trash-alt:hover {
   transform: scale(1.5);
  }
