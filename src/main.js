@@ -56,6 +56,17 @@ const regresarLogin = () => {
 
 document.getElementById("cerrarSesion").addEventListener("click", regresarLogin);
 
+
+const loginAfterReg = () => {
+  logIn.style.display = "block";
+  menu.style.display = "none";
+  muro.style.display = "none";
+  registro.style.display = "none";
+  
+};
+
+document.getElementById("botonRegistrar").addEventListener("click", loginAfterReg);
+
 const formularioRegistro = () => {
   registro.style.display = "block"
   menu.style.display = "none"
@@ -67,13 +78,13 @@ const formularioRegistro = () => {
 document.getElementById("botonRegistrar").addEventListener("click", formularioRegistro);
 
 const registroExitoso = () => {
-  //alert("Te has registrado con exito")
   registro.style.display = "block"
   menu.style.display = "none"
   logIn.style.display = "none";
   muro.style.display = "none";
-  register();
-
+  alert ("Su registro fue exitoso")
+  loginAfterReg()
+  document.getElementById('formulario').reset()
 };
 
 document.getElementById("register").addEventListener("click", registroExitoso);
