@@ -71,7 +71,6 @@ const loginGoogle = () => {
 
       if (errorCode === "aut/account-exists-with-different-credential") {
         alert("Es el mismo usuario");
-        console.log(errorCode);
       }
     });
 };
@@ -87,7 +86,6 @@ let login = () => {
       posts;
       let user = result.user;
       let bienvenida = document.getElementById("nombreBienvenida");
-      console.log(user)
       bienvenida.innerHTML = user.displayName;
       document.getElementById("fotoPerfil").innerHTML = `<img src="https://www.iowagcsa.org/resources/Pictures/Member-Login-Icon.png">`;
       //Json del logueo con correo
@@ -125,7 +123,6 @@ const write = (collection, json, id) => {
     db.collection(collection)
       .add(json)
       .then(function (docRef) {
-        console.log(docRef);
       })
       .catch(function (error) {
         console.error("Error adding document: ", error);
@@ -326,7 +323,6 @@ db.collection("post").onSnapshot(snapshot => {
     let username = document.getElementById(id + "UserID")
 
       if (validarUsuario(username.textContent)) {
-        console.log(id);
         var txt;
         var r = confirm("Seguro que deseas eliminar esta publicación");
         if (r == true) {
@@ -335,7 +331,6 @@ db.collection("post").onSnapshot(snapshot => {
           }).catch((error) => {
           });
         } else {
-          console.log("Cancelaste la eliminación de este post");
         }
       }
     })
@@ -344,7 +339,6 @@ db.collection("post").onSnapshot(snapshot => {
   //Función para likes
   let buttonIcon = document.querySelectorAll(".like");
   buttonIcon.forEach(button => {
-    //console.log(button)
     button.addEventListener("click", btn => {
       //ID de boton
       btnID = btn.target.id;
