@@ -83,8 +83,9 @@ const registroExitoso = () => {
   logIn.style.display = "none";
   muro.style.display = "none";
   alert ("Su registro fue exitoso")
-  loginAfterReg()
+  
   document.getElementById('formulario').reset()
+  loginAfterReg()
 };
 
 document.getElementById("register").addEventListener("click", registroExitoso);

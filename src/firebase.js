@@ -167,7 +167,8 @@ const register = () => {
         user.updateProfile({
           displayName: name,
         })
-          //Json del registro de nuevos usuarios
+    
+        //Json del registro de nuevos usuarios
           .then(() => {
             let datos = {
               nombre: firebase.auth().currentUser.displayName,
@@ -182,6 +183,7 @@ const register = () => {
               alert("El correo electrónico ya está registrado.");
             } else if (error.message === 'Password should be at least 6 characters') {
               alert("La contraseña debe tener almenos 6 caracteres");
+              console.log(error.message)
             } else if (error.message === 'The email address is badly formatted.') {
               alert("Correo electrónico inválido.");
             }
@@ -205,6 +207,9 @@ const posts = () => {
   let establecimiento = document.getElementById("fname").value;
   let ubicacion = document.getElementById("lname").value;
   let comentario = document.getElementById("subject").value;
+  alert("Tu recomendación ha sido publicada")
+  document.getElementById('postForm').reset()
+  
   //Json de post
   let datos = {
     userID: firebase.auth().currentUser.uid,
