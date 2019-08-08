@@ -221,7 +221,7 @@ db.collection("post").onSnapshot(snapshot => {
               <section id="card">
                 <div id="editDelet">
                   <i id="${changes.id}trash" class="far fa-trash-alt delete"></i>
-                  <i id="edit" class="far fa-edit"></i>
+                  <i id="${changes.id}edit" class="far fa-edit edit"></i>
                 </div>
                   <img id="imgAvatar" src="${datos.photoURL}" />
                   <div id="commentNameUser">
@@ -229,9 +229,9 @@ db.collection("post").onSnapshot(snapshot => {
                   </div>
                   <br />
                   <div id="commentText">
-                      <p><strong>Nombre del establecimiento:</strong><br><span id="nombrePrintPost">${datos.establecimiento}</span></p>
-                      <p><strong>Ubicación:</strong><br><span id="ubicacionPrintPost">${datos.ubicacion}</span></p>
-                      <p><strong>Comentario:</strong><br><span id="comentarioPrintPost">${datos.comentario}</span></p>
+                      <p><strong>Nombre del establecimiento:</strong><br><textarea disabled id="${changes.id}nombrePrintPost">${datos.establecimiento}</textarea></p>
+                      <p><strong>Ubicación:</strong><br><textarea disabled id="${changes.id}ubicacionPrintPost">${datos.ubicacion}</textarea></p>
+                      <p><strong>Comentario:</strong><br><textarea disabled id="${changes.id}comentarioPrintPost">${datos.comentario}</textarea></p>
                   </div>
                   <br />
                   <div class="buttonIcon">
@@ -249,6 +249,27 @@ db.collection("post").onSnapshot(snapshot => {
               </section>`;
   });
   posts.innerHTML = output;
+
+  //Función para editar post
+  let buttonEdit = document.querySelectorAll(".edit");
+  buttonEdit.forEach(btnEdit =>{
+    btnEdit.addEventListener("click",btnE =>{
+      //ID del boton
+      btnID = btnE.target.id;
+      //ID del post
+      id = btnID.substring(0, 20);
+
+      document.getElementById(id+"nombrePrintPost").disabled=false
+      document.getElementById(id+"ubicacionPrintPost").disabled=false
+      document.getElementById(id+"comentarioPrintPost").disabled=false
+      
+      //Boton  
+      type = btnID.substring(20, btnID.length);
+      console.log(id)
+    })
+  })
+
+
 
   //Función para eliminar post
   let buttonDelete = document.querySelectorAll(".delete");
