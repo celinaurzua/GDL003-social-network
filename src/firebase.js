@@ -260,7 +260,7 @@ db.collection("post").onSnapshot(snapshot => {
                       <p><strong>Ubicación:</strong><br><textarea disabled id="${changes.id}ubicacionPrintPost">${datos.ubicacion}</textarea></p>
                       <p><strong>Comentario:</strong><br><textarea disabled id="${changes.id}comentarioPrintPost">${datos.comentario}</textarea></p>
                   </div>
-                  <button class="btnComen" hidden id="${changes.id}Guardar">Guardar</button>
+                  <button hidden id="${changes.id}Guardar">Guardar</button>
                   <br />
                   <div class="buttonIcon">
                       <i id="${changes.id}Bueno" class="far fa-smile like"></i>
@@ -277,21 +277,16 @@ db.collection("post").onSnapshot(snapshot => {
               </section>`;
   });
   posts.innerHTML = output;
-
   //Función para editar post
   let buttonEdit = document.querySelectorAll(".edit");
   buttonEdit.forEach(btnEdit => {
     btnEdit.addEventListener("click", btnE => {
-
       //ID del boton
       btnID = btnE.target.id;
       //ID del post
       id = btnID.substring(0, 20);
-
       let username = document.getElementById(id + "UserID")
-
       if ((validarUsuario(username.textContent))) {
-
 
         document.getElementById(id + "nombrePrintPost").disabled = false
         document.getElementById(id + "ubicacionPrintPost").disabled = false
