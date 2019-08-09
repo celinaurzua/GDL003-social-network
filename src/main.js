@@ -88,7 +88,7 @@ const registroExitoso = () => {
   loginAfterReg()
 };
 
-document.getElementById("register").addEventListener("click", registroExitoso);
+document.getElementById("register").addEventListener("click", register);
 
 const regresarInicio = () => {
   logIn.style.display = "block";
@@ -98,3 +98,25 @@ const regresarInicio = () => {
 };
 
 document.getElementById("regresarInicio").addEventListener("click", regresarInicio);
+
+//PARA SACAR EL VALUE DEL OPTION DE LOS ESTADOS Y RESTRINGIR LA PUBLICACION
+  
+const estados = document.getElementById("estados");
+
+estados.addEventListener("change", ()=> {
+
+  const sectionEstado = estados.selectedIndex;
+const sectionEstadoValue = estados.options;
+const valueEstado = sectionEstadoValue[sectionEstado].index;
+
+  document.getElementById("publicar").disabled = true;
+
+if (valueEstado == 14) {
+    document.getElementById("publicar").disabled = false;
+
+  } else {
+    document.getElementById("publicar").disabled = true;
+   alert("Lo sentimos sólo puedes recomendar taquerias de Guadalajara");
+  }
+})
+ 
