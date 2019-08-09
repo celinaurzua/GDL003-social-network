@@ -209,6 +209,28 @@ const posts = () => {
   let comentario = document.getElementById("subject").value;
   alert("Tu recomendación ha sido publicada")
   document.getElementById('postForm').reset()
+
+
+/*
+PARA SACAR EL VALUE DEL OPTION DE LOS ESTADOS Y RESTRINGIR LA PUBLICACION
+
+  const sectionEstado = document.getElementById("estados").selectedIndex;
+  const sectionEstadoValue = document.getElementById("estados").options;
+  const valueEstado = sectionEstadoValue[sectionEstado].index;
+   
+  document.getElementById("publicar").disabled = true;
+
+  if (valueEstado == 14) {
+      document.getElementById("publicar").disabled = false;
+      alert("Tu recomendación ha sido publicada")
+      document.getElementById('postForm').reset()
+
+    } else {
+      document.getElementById("publicar").disabled = true;
+     alert("Lo sentimos sólo puedes recomendar taquerias de Guadalajara");
+    }
+*/
+
   
   //Json de post
   let datos = {
