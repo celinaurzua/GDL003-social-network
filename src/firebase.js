@@ -203,31 +203,32 @@ const posts = () => {
   let establecimiento = document.getElementById("fname").value;
   let ubicacion = document.getElementById("lname").value;
   let comentario = document.getElementById("subject").value;
-  
-  if (establecimiento != "" && ubicacion != "" && comentario != "" ){
-    
-  
-  document.getElementById('postForm').reset()
-  alert("Tu recomendación ha sido publicada")
-  
-  //Json de post
-  let datos = {
-    userID: firebase.auth().currentUser.uid,
-    establecimiento: establecimiento,
-    ubicacion: ubicacion,
-    comentario: comentario,
-    userID: firebase.auth().currentUser.uid,
-    displayName: firebase.auth().currentUser.displayName,
-    photoURL: firebase.auth().currentUser.photoURL,
-    bueno: 0,
-    malo: 0,
-    regular: 0
-  };
-  //Escribiendo en database
-  write("post", datos, "");
-}else{
-  alert("No se puede publicar post vacio")
-}};
+
+  if (establecimiento != "" && ubicacion != "" && comentario != "") {
+
+
+    document.getElementById('postForm').reset()
+    alert("Tu recomendación ha sido publicada")
+
+    //Json de post
+    let datos = {
+      userID: firebase.auth().currentUser.uid,
+      establecimiento: establecimiento,
+      ubicacion: ubicacion,
+      comentario: comentario,
+      userID: firebase.auth().currentUser.uid,
+      displayName: firebase.auth().currentUser.displayName,
+      photoURL: firebase.auth().currentUser.photoURL,
+      bueno: 0,
+      malo: 0,
+      regular: 0
+    };
+    //Escribiendo en database
+    write("post", datos, "");
+  } else {
+    alert("No se puede publicar post vacio")
+  }
+};
 //Leyendo database para imprimir post
 
 db.collection("post").onSnapshot(snapshot => {
@@ -260,7 +261,8 @@ db.collection("post").onSnapshot(snapshot => {
                       <p><strong>Ubicación:</strong><br><textarea disabled id="${changes.id}ubicacionPrintPost">${datos.ubicacion}</textarea></p>
                       <p><strong>Comentario:</strong><br><textarea disabled id="${changes.id}comentarioPrintPost">${datos.comentario}</textarea></p>
                   </div>
-                  <button hidden id="${changes.id}Guardar">Guardar</button>
+                  <center>
+                  <button  hidden id="${changes.id}Guardar" style="background-color: #ffd35b;color: #503291;padding: 15px 32px">Guardar</button> </center>
                   <br />
                   <div class="buttonIcon">
                       <i id="${changes.id}Bueno" class="far fa-smile like"></i>
