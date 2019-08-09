@@ -51,7 +51,7 @@ input[type="password"] {
   box-sizing: border-box;
 }
 .button {
-  background-color: #ffd35b; /* Green */
+  background-color: #ffd35b;
   border: none;
   color: #503291;
   padding: 15px 32px;
@@ -67,6 +67,19 @@ input[type="password"] {
   cursor: pointer;
   width: 25%;
 }
+.button:hover{
+  background-color: #503291; 
+  border-color: #ffd35b;
+  border-style: solid;
+  color: #ffd35b;
+}
+#publicar:hover{
+  background-color: #f2f2f2;
+  border-color: #503291;
+  border-style: solid;
+  color: #503291;
+}
+
 #botonIngresar {
   margin-top: 40px;
 }

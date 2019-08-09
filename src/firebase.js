@@ -279,21 +279,16 @@ db.collection("post").onSnapshot(snapshot => {
               </section>`;
   });
   posts.innerHTML = output;
-
   //Función para editar post
   let buttonEdit = document.querySelectorAll(".edit");
   buttonEdit.forEach(btnEdit => {
     btnEdit.addEventListener("click", btnE => {
-
       //ID del boton
       btnID = btnE.target.id;
       //ID del post
       id = btnID.substring(0, 20);
-
       let username = document.getElementById(id + "UserID")
-
       if ((validarUsuario(username.textContent))) {
-
 
         document.getElementById(id + "nombrePrintPost").disabled = false
         document.getElementById(id + "ubicacionPrintPost").disabled = false
