@@ -17,8 +17,6 @@ const loginFacebook = () => {
           user.photoURL
           }">`;
         let nombrePost = document.getElementById("nombrePost");
-        //nombrePost.innerHTML = user.displayName
-        //document.getElementById("fotoPost").innerHTML = `<img src="${user.photoURL}">`
 
         //Json del logueo de Facebook
         let datos = {
@@ -53,7 +51,7 @@ const loginGoogle = () => {
         user.photoURL
         }">`;
       let nombrePost = document.getElementById("nombrePost");
-      //nombrePost.innerHTML = user.displayName
+
       //Json del logueo de Google
       let datos = {
         nombre: user.displayName,
@@ -168,8 +166,6 @@ const register = () => {
         })
           //Json del registro de nuevos usuarios
           .then(() => {
-            console.log(firebase.auth().currentUser)
-            console.log(firebase.auth().currentUser.photoURL)
             let datos = {
               nombre: firebase.auth().currentUser.displayName,
               imagen: "https://www.iowagcsa.org/resources/Pictures/Member-Login-Icon.png",
@@ -181,12 +177,10 @@ const register = () => {
           })
 
       }).catch((error) => {
-        console.log(error.message)
         if (error.message === 'The email address is already in use by another account.') {
           alert("El correo electrónico ya está registrado.");
         } else if (error.message === 'Password should be at least 6 characters') {
           alert("La contraseña debe tener almenos 6 caracteres");
-          console.log(error.message)
         } else if (error.message === 'The email address is badly formatted.') {
           alert("Correo electrónico inválido.");
         }
@@ -211,9 +205,7 @@ const posts = () => {
   let comentario = document.getElementById("subject").value;
   
   if (establecimiento != "" && ubicacion != "" && comentario != "" ){
-    console.log("hola")
-  
- 
+    
   
   document.getElementById('postForm').reset()
   alert("Tu recomendación ha sido publicada")
@@ -235,9 +227,7 @@ const posts = () => {
   write("post", datos, "");
 }else{
   alert("No se puede publicar post vacio")
-}
-};
-// const printPosts = async () => {
+}};
 //Leyendo database para imprimir post
 
 db.collection("post").onSnapshot(snapshot => {
@@ -270,7 +260,7 @@ db.collection("post").onSnapshot(snapshot => {
                       <p><strong>Ubicación:</strong><br><textarea disabled id="${changes.id}ubicacionPrintPost">${datos.ubicacion}</textarea></p>
                       <p><strong>Comentario:</strong><br><textarea disabled id="${changes.id}comentarioPrintPost">${datos.comentario}</textarea></p>
                   </div>
-                  <button hidden id="${changes.id}Guardar">Guardar</button>
+                  <button class="btnComen" hidden id="${changes.id}Guardar">Guardar</button>
                   <br />
                   <div class="buttonIcon">
                       <i id="${changes.id}Bueno" class="far fa-smile like"></i>
@@ -420,9 +410,6 @@ db.collection("post").onSnapshot(snapshot => {
         .catch(function (error) {
           console.log("Error getting document:", error);
         });
-      //Extraer el conteo del tipo de like (bueno, malo, regular)
-      //Sumar +1 al tipo de like
-      //escribir al documento el nuevo numero del like
     });
   });
 });
@@ -447,6 +434,5 @@ window.guanataco = {
   login,
   posts,
   register
-  // printPosts
 };
 
