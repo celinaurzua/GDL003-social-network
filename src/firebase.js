@@ -160,34 +160,36 @@ const register = () => {
   } else {
     document.getElementById("messageConfirm").innerHTML = "La contraseña sí coincide";
     document.getElementById("register").disabled = false;
-
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(result => {
         let user = firebase.auth().currentUser;
         user.updateProfile({
           displayName: name,
         })
-    
-        //Json del registro de nuevos usuarios
+          //Json del registro de nuevos usuarios
           .then(() => {
+            console.log(firebase.auth().currentUser)
+            console.log(firebase.auth().currentUser.photoURL)
             let datos = {
               nombre: firebase.auth().currentUser.displayName,
-              imagen: firebase.auth().currentUser.photoURL,
+              imagen: "https://www.iowagcsa.org/resources/Pictures/Member-Login-Icon.png",
               email: firebase.auth().currentUser.email
             };
             //Escribiendo en database
             write("users", datos, firebase.auth().currentUser.uid);
+            registroExitoso();
           })
-          .catch((error) => {
-            if (error.message === 'The email address is already in use by another account.') {
-              alert("El correo electrónico ya está registrado.");
-            } else if (error.message === 'Password should be at least 6 characters') {
-              alert("La contraseña debe tener almenos 6 caracteres");
-              console.log(error.message)
-            } else if (error.message === 'The email address is badly formatted.') {
-              alert("Correo electrónico inválido.");
-            }
-          })
+
+      }).catch((error) => {
+        console.log(error.message)
+        if (error.message === 'The email address is already in use by another account.') {
+          alert("El correo electrónico ya está registrado.");
+        } else if (error.message === 'Password should be at least 6 characters') {
+          alert("La contraseña debe tener almenos 6 caracteres");
+          console.log(error.message)
+        } else if (error.message === 'The email address is badly formatted.') {
+          alert("Correo electrónico inválido.");
+        }
       })
   }
 };
@@ -207,30 +209,14 @@ const posts = () => {
   let establecimiento = document.getElementById("fname").value;
   let ubicacion = document.getElementById("lname").value;
   let comentario = document.getElementById("subject").value;
-  alert("Tu recomendación ha sido publicada")
+  
+  if (establecimiento != "" && ubicacion != "" && comentario != "" ){
+    console.log("hola")
+  
+ 
+  
   document.getElementById('postForm').reset()
-
-
-/*
-PARA SACAR EL VALUE DEL OPTION DE LOS ESTADOS Y RESTRINGIR LA PUBLICACION
-
-  const sectionEstado = document.getElementById("estados").selectedIndex;
-  const sectionEstadoValue = document.getElementById("estados").options;
-  const valueEstado = sectionEstadoValue[sectionEstado].index;
-   
-  document.getElementById("publicar").disabled = true;
-
-  if (valueEstado == 14) {
-      document.getElementById("publicar").disabled = false;
-      alert("Tu recomendación ha sido publicada")
-      document.getElementById('postForm').reset()
-
-    } else {
-      document.getElementById("publicar").disabled = true;
-     alert("Lo sentimos sólo puedes recomendar taquerias de Guadalajara");
-    }
-*/
-
+  alert("Tu recomendación ha sido publicada")
   
   //Json de post
   let datos = {
@@ -247,6 +233,9 @@ PARA SACAR EL VALUE DEL OPTION DE LOS ESTADOS Y RESTRINGIR LA PUBLICACION
   };
   //Escribiendo en database
   write("post", datos, "");
+}else{
+  alert("No se puede publicar post vacio")
+}
 };
 // const printPosts = async () => {
 //Leyendo database para imprimir post
@@ -259,8 +248,8 @@ db.collection("post").onSnapshot(snapshot => {
     // if(changes.type == "added"){
     let datos = changes.data();
 
-    
-    if(datos.photoURL == null){
+
+    if (datos.photoURL == null) {
       datos.photoURL = "https://www.iowagcsa.org/resources/Pictures/Member-Login-Icon.png"
     }
 
@@ -312,7 +301,7 @@ db.collection("post").onSnapshot(snapshot => {
       let username = document.getElementById(id + "UserID")
 
       if ((validarUsuario(username.textContent))) {
-        
+
 
         document.getElementById(id + "nombrePrintPost").disabled = false
         document.getElementById(id + "ubicacionPrintPost").disabled = false
@@ -343,11 +332,11 @@ db.collection("post").onSnapshot(snapshot => {
   buttonDelete.forEach(btnDel => {
     btnDel.addEventListener("click", btnD => {
       //ID del boton
-    btnID = btnD.target.id;
-    //ID del post
-    id = btnID.substring(0, 20);
+      btnID = btnD.target.id;
+      //ID del post
+      id = btnID.substring(0, 20);
 
-    let username = document.getElementById(id + "UserID")
+      let username = document.getElementById(id + "UserID")
 
       if (validarUsuario(username.textContent)) {
         var txt;
