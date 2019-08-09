@@ -5,7 +5,7 @@
 Las redes sociales son parte de nuestro día a día, una forma de crear comunidad entorno a las temáticas que más nos atraigan. En nuestro caso decidimos crear una red social dedicada a los tacos, específicamente un sitio donde puedas publicar recomendaciones y leer las de los demás. 
 
 La lógica del proyecto debe está implementada completamente en JavaScript (ES6),
-HTML y CSS :smiley:. Para este proyecto no está permitido utilizar
+HTML y CSS. Para este proyecto no está permitido utilizar
 frameworks de JS.
 
 
