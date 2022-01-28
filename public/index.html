@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Guanataco</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="" />
+  <link rel="stylesheet" href="style-post.css" />
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700,700i,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/f4b836b075.js"></script>
+</head>
+<nav id="navigation" role="navigation">
+  <div id="menuToggle">
+    <a id="guanatacoNav">Guanataco</a>
+    <button id="cerrarSesion">Cerrar sesión<i id="iconCerrarSesion" class="fas fa-sign-out-alt"></i></button>
+</nav>
+
+<body id="body">
+  <main>
+    <!-- INICIO -->
+    <div id="logIn" class="logIn">
+      <img id="logo" src="imgs/tacologo.png">
+      <br>
+      <br>
+      <h1 id="guanataco">Guanataco</h1>
+      <form id="formLogin">
+        <section>
+          <p class="textForm">Email</p>
+          <input type="text" id="emailLogin" name="fname">
+        </section>
+        <section class="form">
+          <p class="textForm">Contraseña</p>
+          <input type="password" id="passwordLogin" name="fname">
+        </section>
+      </form>
+      <button id="botonIngresar" class="button button1">INGRESAR</button>
+      <br>
+      <p class="sinregistrotxt">Ingresa con facebook o gmail</p>
+      <button id="Facebook"><i class="fab fa-facebook-f"></i></button>
+      <button id="google"><i class="fab fa-google"></i></button>
+      <br>
+      <p class="sinregistrotxt">o regístrate</p>
+      <button id="botonRegistrar" class="button button1">REGISTRARSE</button>
+    </div>
+
+    <div id="registroCorreo">
+
+
+      <h1 class="textoInicio" id="registrate">Regístrate</h1>
+      <form id="formulario">
+        <section class="form">
+          <p class="textForm">Nombre completo</p>
+          <input type="text" id="fnombre" name="fnombre">
+        </section>
+        <section class="form">
+          <p class="textForm">Correo electrónico</p>
+          <input type="text" id="fcorreo" name="fcorreo">
+        </section>
+        <section class="form">
+        <p class="textForm">Contraseña</p>
+        <input type="password" id="fpassword" name="fpassword">
+        </section>
+        <section class="form">
+          <p class="textForm">Confirmar contraseña</p>
+          <input type="password" id="fpasswordConfirm" name="fpassword">
+          <br>
+          <span id="messageConfirm"></span> 
+        </section>
+      </form>
+      <br>
+      <button id="register" class="button register">REGISTRAR</button>
+      <br>
+      <button id="regresarInicio" class="button register">REGRESAR</button>
+    </div>
+
+    <div id="muro">
+      <p id="textoInicio" class="textoInicio">¡Comienza a publicar tus recomendaciones!</p>
+      <div class="container">
+        <div>
+          <div id="fotoPerfil">
+            <img class="imgGoogle" src="" alt=""></div>
+          <span id="nombreBienvenida" class="nombreUsuario"></span>
+          <form id="postForm">
+          <p class="txtForm" id="df">Nombre del establecimiento</p>
+          <input type="text" id="fname">
+          <br>
+          <p class="txtForm">Ubicación</p>
+          <input type="text" id="lname">
+          <select name="estados" id="estados">
+              <option value="0">Selecciona el estado</option>
+              <option value="1">Aguascalientes</option>
+              <option value="2">Baja California</option>
+              <option value="3">Baja California Sur</option>
+              <option value="4">Campeche</option>
+              <option value="5">Coahuila de Zaragoza</option>
+              <option value="6">Colima</option>
+              <option value="7">Chiapas</option>
+              <option value="8">Chihuahua</option>
+              <option value="9">Distrito Federal</option>
+              <option value="10">Durango</option>
+              <option value="11">Guanajuato</option>
+              <option value="12">Guerrero</option>
+              <option value="13">Hidalgo</option>
+              <option value="14">Jalisco</option>
+              <option value="15">México</option>
+              <option value="16">Michoacán de Ocampo</option>
+              <option value="17">Morelos</option>
+              <option value="18">Nayarit</option>
+              <option value="19">Nuevo León</option>
+              <option value="20">Oaxaca</option>
+              <option value="21">Puebla</option>
+              <option value="22">Querétaro</option>
+              <option value="23">Quintana Roo</option>
+              <option value="24">San Luis Potosí</option>      <option value="25">Sinaloa</option>
+              <option value="26">Sonora</option>
+              <option value="27">Tabasco</option>
+              <option value="28">Tamaulipas</option>
+              <option value="29">Tlaxcala</option>
+              <option value="30">Veracruz de Ignacio de la Llave</option>
+              <option value="31">Yucatán</option>
+              <option value="32">Zacatecas</option>
+            </select>
+          <p class="txtForm">Comentario</p>
+          <textarea id="subject" style="height:100px" style="border: none;" ></textarea>
+        </form>
+          <select>
+            <option>Público</option>
+            <option>Privado</option>
+          </select>
+          <br>
+          <button class="button button1" id="publicar">PUBLICAR</button>
+        </div>
+      </div>
+      <p class="textoInicio">¡Explora nuevos lugares!</p>
+
+      <div id="divPosts">
+
+      </div>
+
+  </main>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+    }
+
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+  <script src="firebaseConfig.js"></script>
+  <script type="text/javascript"
+    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="firebase.js"></script>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
